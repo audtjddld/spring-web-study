@@ -168,7 +168,7 @@
 			<version>1.9.7</version>
 		</dependency>
 		<!-- json view 끝 -->
-		
+
 		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -178,10 +178,10 @@
 
 		<!-- 타일즈 -->
 		<dependency>
-            <groupId>commons-digester</groupId>
-            <artifactId>commons-digester</artifactId>
-            <version>1.8</version>
-        </dependency>
+			<groupId>commons-digester</groupId>
+			<artifactId>commons-digester</artifactId>
+			<version>1.8</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-core</artifactId>
@@ -199,6 +199,23 @@
 		</dependency>
 		<!-- 타일즈 셋팅 끝 -->
 
+		<!-- AspectJ <dependency> <groupId>org.springframework</groupId> <artifactId>spring-aop</artifactId> 
+			<version>4.0.5.RELEASE</version> </dependency> AspectJ 끝 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>4.1.4.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.6.11</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.6.11</version>
+		</dependency>
 	</dependencies>
 
 	<build>
