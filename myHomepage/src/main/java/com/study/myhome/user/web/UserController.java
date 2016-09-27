@@ -28,8 +28,8 @@ public class UserController {
 		if(biResult.hasErrors()) {
 			LOG.info("Validation Error!!");
 			System.out.println(biResult.getFieldError());
-			throw new BadRequestException(biResult.getAllErrors().toString());
-			//return "redirect:/index.do";
+			//throw new BadRequestException(biResult.getAllErrors().toString());
+			return "redirect:/index.do";
 		}
 		LOG.info("goView");
 		return "redirect:/index.do";
