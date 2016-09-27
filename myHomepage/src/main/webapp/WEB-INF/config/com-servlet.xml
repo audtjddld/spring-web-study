@@ -11,10 +11,9 @@
 		전자정부에서 controller, service, dao 부분을 2가지로 나누어서 설정해놨다. 현재 WEB-INF 에 있는 
 		servlet 설정은 controller에 해당된다고 하기 때문에 service 와 dao 부분은 exclude 시켜놨다. 
 	-->
-	<!-- jeus에서 문제가 발생된다. 해당 내용은 -->
+	<!-- jeus에서 문제가 발생된다. 해당 내용은
 	<mvc:default-servlet-handler default-servlet-name="WorkerServlet"></mvc:default-servlet-handler>
-	<context:annotation-config/>
-	
+	 -->
 	<!-- 패키지 내 Controller, Service, Repository 클래스의 auto detect를 위한 mvc 설정 -->
 	<context:component-scan base-package="egovframework, com">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
@@ -31,8 +30,11 @@
 		<property name="defaultErrorView" value="cmm/error/egovError" />
 		<property name="exceptionMappings">
 			<props>
+				<!-- 
 				<prop key="org.springframework.dao.DataAccessException">cmm/error/dataAccessFailure</prop>
 				<prop key="org.springframework.transaction.TransactionException">cmm/error/transactionFailure</prop>
+				 -->
+				 <prop key="com.study.myhome.common.exception.BadRequestException">error/blank</prop>
 			</props>
 		</property>
 	</bean>
@@ -45,7 +47,7 @@
 	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<property name="definitions">
 			<list>
-				<value>classpath:/egovframework/tiles/layouts.xml</value>
+				<value>classpath:/egovframework/spring/com/tiles-layouts.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -62,6 +64,13 @@
 			<mvc:mapping path="/main/index.do" />
 			<bean class="egovframework.com.cmm.interceptor.AuthenticInterceptor" />
 		</mvc:interceptor>
+		
+		<!-- 메뉴 구하기 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.study.myhome.common.interceptor.MenuInfoInterceptor" />
+		</mvc:interceptor>
+		
 	</mvc:interceptors>
 
 	<mvc:annotation-driven />

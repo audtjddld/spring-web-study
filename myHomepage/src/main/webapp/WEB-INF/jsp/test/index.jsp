@@ -2,17 +2,13 @@
 	pageEncoding="UTF-8"%>
 
 
-<div class="container">
-	<div class="starter-template">
-		<h2>ajax test</h2>
-		<input type="button" class="btn" value="click" onclick="ajaxTest();" />
-	</div>
-</div>
+<h2>ajax test</h2>
+<input type="button" class="btn" value="click" onclick="ajaxTest();" />
 
 <script type="text/javascript">
 	function ajaxTest() {
 		$.ajax({
-			type : "POST" //"POST", "GET"
+			type : "GET" //"POST", "GET"
 			,
 			url : "/index.ajax" //Request URL
 			,
@@ -28,6 +24,6 @@
 				//통신 성공시 처리
 				alert(response.message);
 			}
-		});	
+		});
 	}
 </script>

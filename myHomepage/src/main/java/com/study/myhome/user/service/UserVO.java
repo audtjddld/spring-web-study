@@ -1,0 +1,47 @@
+package com.study.myhome.user.service;
+
+import java.util.Date;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+public class UserVO {
+
+	public UserVO() {
+		this.joinDate = new Date();
+	}
+
+	@Size(min = 4, max = 10)
+	@NotNull
+	private String username;
+
+	@NotNull
+	private String password;
+
+	private Date joinDate;
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Date getJoinDate() {
+		return joinDate;
+	}
+
+	public void setJoinDate(Date joinDate) {
+		this.joinDate = joinDate;
+	}
+
+}

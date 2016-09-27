@@ -28,7 +28,6 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 public class EgovTestUserDetailsServiceImpl extends EgovAbstractServiceImpl implements
 		EgovUserDetailsService {
 
-	@Override
 	public Object getAuthenticatedUser() {
 
 		LoginVO loginVO = new LoginVO();
@@ -48,7 +47,6 @@ public class EgovTestUserDetailsServiceImpl extends EgovAbstractServiceImpl impl
 
 	}
 
-	@Override
 	public List<String> getAuthorities() {
 
 		// 권한 설정을 리턴한다.
@@ -65,7 +63,6 @@ public class EgovTestUserDetailsServiceImpl extends EgovAbstractServiceImpl impl
 		return listAuth;
 	}
 
-	@Override
 	public Boolean isAuthenticated() {
 		// 인증된 유저인지 확인한다.
 

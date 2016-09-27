@@ -7,9 +7,16 @@
 	http://www.springframework.org/schema/aop 
 	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 
-	<!-- 홈페이지의 주요기능인 협업(게시판, 일정관리)기능 작동과정에서 Exception 발생시 후처리를 위한 AOP설정 -->
+	<!-- 홈페이지의 주요기능인 협업(게시판, 일정관리)기능 작동과정에서 Exception 발생시 후처리를 위한 AOP설정 
 	<aop:aspectj-autoproxy proxy-target-class="true" />
-	
-	<bean id="logAspect" class="com.study.myhome.common.aop.GlobalLogging" />
-	
+	-->
+	 <aop:config>
+	 	<aop:aspect ref="loggingAdvice">
+	 		<aop:pointcut expression="execution(* com.study.myhome..*Controller.*(..))" id="loggerPointcut" />
+	 		<aop:before pointcut-ref="loggerPointcut" method="loggingAdvice" />
+	 	</aop:aspect>
+	 </aop:config>
+	 
+	 <bean id="loggingAdvice" class="com.study.myhome.common.aop.GlobalLogging" />
+	 
 </beans>

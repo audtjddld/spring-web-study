@@ -37,9 +37,11 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="/index.do">Home</a></li>
             <li><a href="/test.do">Test</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="/user/login.do">login</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-
+    
+    <div class="container">
+		<div class="starter-template">
