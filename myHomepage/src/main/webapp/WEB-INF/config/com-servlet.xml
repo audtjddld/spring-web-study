@@ -3,9 +3,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
-                http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+				http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                http://www.springframework.org/schema/context 
+                http://www.springframework.org/schema/context/spring-context-4.0.xsd
+                http://www.springframework.org/schema/mvc 
+                http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
 	<!-- 
 		전자정부에서 controller, service, dao 부분을 2가지로 나누어서 설정해놨다. 현재 WEB-INF 에 있는 
@@ -64,13 +67,11 @@
 			<mvc:mapping path="/main/index.do" />
 			<bean class="egovframework.com.cmm.interceptor.AuthenticInterceptor" />
 		</mvc:interceptor>
-		
 		<!-- 메뉴 구하기 -->
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
 			<bean class="com.study.myhome.common.interceptor.MenuInfoInterceptor" />
 		</mvc:interceptor>
-		
 	</mvc:interceptors>
 
 	<mvc:annotation-driven />
