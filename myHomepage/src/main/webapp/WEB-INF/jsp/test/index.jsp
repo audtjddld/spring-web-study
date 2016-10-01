@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 
-
 <h2>ajax test</h2>
 <input type="button" class="btn" value="click" onclick="ajaxTest();" />
 

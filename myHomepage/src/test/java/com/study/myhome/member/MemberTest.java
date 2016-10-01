@@ -35,4 +35,14 @@ public class MemberTest {
 			LOG.info("user : {} , {}", user.getUsername(), user.getPassword() );
 		});
 	}
+	
+	@Test
+	public void getMemberList2() {
+		
+		List<UserVO> list = memberService.getMembers();
+		String username = "user5";
+		list.forEach(user -> {
+			if(user.getUsername().equals(username)) System.out.println("true");
+		});
+	}
 }

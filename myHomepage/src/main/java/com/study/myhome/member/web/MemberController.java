@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.study.myhome.member.service.MemberService;
@@ -27,4 +28,18 @@ public class MemberController {
 		
 		return "member/list.myhome";
 	}
+	
+	// /member/{username}.do
+	@RequestMapping(value="/member/{username}.do")
+	public String getMember(@PathVariable("username") String username, ModelMap modelMap) {
+		List<UserVO> list = memberService.getMembers();
+		// user5
+
+		list.forEach(user -> {
+			if(user.getUsername().equals(username)) modelMap.addAttribute("user", user);
+		});
+		
+		return "member/view.myhome";
+	}
+	
 }
