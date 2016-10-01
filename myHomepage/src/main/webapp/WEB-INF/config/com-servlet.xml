@@ -63,6 +63,7 @@
 	<!-- 로그인 체크가 필요한 URL과 로그인 여부를 체크해준다 -->
 	<!-- 추가적으로 필요한 기능이 있다면 interceptor를 구현하여 처리 할 수 있다. mapping 은 해당되는 부분에서 interceptor를 태운다. exclude-mapping 제외한다. -->
 	<mvc:interceptors>
+		<!-- 권한 체크 -->
 		<mvc:interceptor>
 			<mvc:mapping path="/main/index.do" />
 			<bean class="egovframework.com.cmm.interceptor.AuthenticInterceptor" />

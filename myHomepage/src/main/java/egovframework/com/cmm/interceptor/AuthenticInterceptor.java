@@ -45,7 +45,7 @@ public class AuthenticInterceptor extends WebContentInterceptor {
 			return true;
 		} else {
 			// ModelAndViewDefiningException 은 view로 이동시켜준다. prehandler의 반환형은 boolean 형이지만 아래 Exception으로 처리하는 것이 깔끔한것 같다.
-			ModelAndView modelAndView = new ModelAndView("redirect:/uat/uia/egovLoginUsr.do");
+			ModelAndView modelAndView = new ModelAndView("redirect:/index.do");
 			throw new ModelAndViewDefiningException(modelAndView);
 		}
 	}

@@ -20,7 +20,7 @@
     </filter-mapping>
     <!-- 템플릿 소스에서는 아래의 필터사용 대신 JSP 출력시 <c:out> 태그를 사용하는 것을 기본정책으로 한다  -->
     <!-- egovframework.rte.ptl.mvc.filter.HTMLTagFilter egovframework.com.cmm.filter.HTMLTagFilter-->    
-    <!-- url 요청 관련하여 xss 공격을 차단하기 위한 filter다. 위에서 이야기 한 el을 이용해서 표현하는 것이 기본이지만. 그렇지 않은 경우도 많다.
+    <!--  url 요청 관련하여 xss 공격을 차단하기 위한 filter다. 위에서 이야기 한 el을 이용해서 표현하는 것이 기본이지만. 그렇지 않은 경우도 많다.  -->
     <filter>
         <filter-name>HTMLTagFilter</filter-name>
         <filter-class>egovframework.rte.ptl.mvc.filter.HTMLTagFilter</filter-class>
@@ -29,7 +29,6 @@
         <filter-name>HTMLTagFilter</filter-name>
         <url-pattern>*.do</url-pattern>
     </filter-mapping>
-    -->	
     
     <!-- 설정 파일 로드 설정 -->
 	<context-param>

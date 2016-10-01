@@ -14,5 +14,15 @@
 	<definition name="*/*.myhome" extends="layouts-main-front">
 		<put-attribute name="content" value="/WEB-INF/jsp/{1}/{2}.jsp" />
 	</definition>
+	<definition name="*/*/*.myhome" extends="layouts-main-front">
+		<put-attribute name="content" value="/WEB-INF/jsp/{1}/{2}/{3}.jsp" />
+	</definition>
+	<definition name="*/*/*/*.myhome" extends="layouts-main-front">
+		<put-attribute name="content" value="/WEB-INF/jsp/{1}/{2}/{3}/{4}.jsp" />
+	</definition>
+	<definition name="*/*/*/*/*.myhome" extends="layouts-main-front">
+		<put-attribute name="content" value="/WEB-INF/jsp/{1}/{2}/{3}/{4}/{5}.jsp" />
+	</definition>
+	
 	
 </tiles-definitions>

@@ -9,24 +9,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.WebContentInterceptor;
 
-
 public class MenuInfoInterceptor extends WebContentInterceptor {
-	
-	private static Logger LOG = LoggerFactory.getLogger(MenuInfoInterceptor.class);
-	
+
+	private static Logger LOG = LoggerFactory
+			.getLogger(MenuInfoInterceptor.class);
+
 	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws ServletException {
-		
-		LOG.info("menuInterceptor prehandler");
-		return true;
-	}
-	
-	
-	@Override
-	public void postHandle(
-			HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)
-			throws Exception {
-		
+	public void postHandle(HttpServletRequest request,
+			HttpServletResponse response, Object handler,
+			ModelAndView modelAndView) throws Exception {
+
 		LOG.info("menuInterceptor postHandle");
 	}
 
