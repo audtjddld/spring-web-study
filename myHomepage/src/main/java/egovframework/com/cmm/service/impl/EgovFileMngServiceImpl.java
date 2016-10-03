@@ -30,7 +30,8 @@ import org.springframework.stereotype.Service;
  */
 @Service("EgovFileMngService")
 public class EgovFileMngServiceImpl extends EgovAbstractServiceImpl implements EgovFileMngService {
-
+	
+	
     @Resource(name = "FileManageDAO")
     private FileManageDAO fileMngDAO;
 

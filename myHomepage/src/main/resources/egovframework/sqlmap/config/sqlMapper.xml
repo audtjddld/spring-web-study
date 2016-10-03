@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
-    "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
 
-<sqlMapConfig>
+<configuration>
+	<settings>
+		<setting name="cacheEnabled" value="true" />
+		<setting name="lazyLoadingEnabled" value="false" />
+		<setting name="multipleResultSetsEnabled" value="true" />
+		<setting name="useColumnLabel" value="true" />
+		<setting name="useGeneratedKeys" value="false" />
+		<setting name="defaultExecutorType" value="SIMPLE" />
+		<setting name="defaultStatementTimeout" value="25000" />
+	</settings>
 
-	<!-- 파일 정보 -->
-	<sqlMap resource="egovframework/sqlmap/fms/file_sql.xml" />
+	<typeAliases>
+		<typeAlias alias="userVO" type="com.study.myhome.user.service.UserVO" />
+	</typeAliases>
 
-</sqlMapConfig>
+</configuration>
