@@ -18,9 +18,10 @@
 		<jdbc:script location="classpath:egovframework/db/user.sql" />
 		<jdbc:script location="classpath:egovframework/db/menu.sql" />
 		<jdbc:script location="classpath:egovframework/db/menu_detail.sql" />
+		<jdbc:script location="classpath:egovframework/db/user_authority.sql" />
 	</jdbc:embedded-database>
 
-<!-- 
+<!--
   <bean id="dataSource-mysql" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${Globals.DriverClassName}"/>
         <property name="url" value="${Globals.Url}" />

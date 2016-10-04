@@ -27,32 +27,28 @@ public class UserControllerTest {
 	private MockMvc mockMvc;
 
 	@Autowired
-    private WebApplicationContext wac;
-	
+	private WebApplicationContext wac;
+
 	@Before
 	public void setUp() throws Exception {
-		mockMvc = MockMvcBuilders
-					.webAppContextSetup(this.wac)
-					.alwaysDo(MockMvcResultHandlers.print())
-					.build();
+		mockMvc = MockMvcBuilders.webAppContextSetup(this.wac)
+				.alwaysDo(MockMvcResultHandlers.print()).build();
 	}
 
 	/**
-	 * validation test. 
-	 * controller 에서 @Valid 애노테이션을 이용한 Error 검증이 정확히 되는지 검증
-	 * @author 정명성
-	 * create date : 2016. 9. 27.
+	 * validation test. controller 에서 @Valid 애노테이션을 이용한 Error 검증이 정확히 되는지 검증
+	 * 
+	 * @author 정명성 create date : 2016. 9. 27.
 	 * @throws Exception
 	 */
 	@Test
 	public void test1() throws Exception {
-		mockMvc.perform(
-						post("/user/join.do")
-							.param("username", "1")
-							//.param("password", "123412341234")	// validation test
-						)
-				.andExpect(
-							model().attributeHasFieldErrors("userVO", "password", "username")
-						  );
+		mockMvc
+			.perform(
+						post("/user/join.do").param("username", "1")
+					).andExpect(
+							model().attributeHasFieldErrors("userVO", "password",
+					"username"));
+		// .param("password", "123412341234") // validation test
 	}
 }

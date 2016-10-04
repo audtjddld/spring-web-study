@@ -5,7 +5,12 @@ import java.util.Date;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class UserVO {
+import org.apache.ibatis.type.Alias;
+
+import com.study.myhome.common.service.Pageable;
+
+@Alias("UserVO")
+public class UserVO extends Pageable {
 
 	public UserVO() {
 		this.joinDate = new Date();

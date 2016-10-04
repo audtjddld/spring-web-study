@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="onj.board.dao.BoardDAO">
-
-	<typeAlias  alias="UserVO" type="com.study.myhome.user.service.UserVO"/>
-	<select id="UserDAO.selectUsers" parameterType="hashmap" resultType="UserVO">
+<mapper namespace="UserDAO">
 	
-		<![CDATA[
-		SELECT 	USERNAME,
-				PASSWORD,
-				JOIN_DATE
-			FROM USER
-		]]>
+	<!-- 사용자 조회 -->
+	<select id="selectUsers" resultType="UserVO">
+		SELECT * FROM (
+			SELECT 	ROWNUM() row,
+					USERNAME,
+					PASSWORD,
+					JOIN_DATE
+				FROM USER
+		) WHERE row BETWEEN #{firstIndex} + 1  AND #{firstIndex} + #{recordCountPerPage}
 	</select>
-
+	
+	<!-- 사용자 총 갯수 -->
+	<select id="selectUsersTotalCnt" resultType="Integer" >
+		SELECT COUNT(*) 
+			FROM USER
+	</select>
+	
+	<!-- 사용자 입력 -->
+	<insert id="insertUser" parameterType="UserVO">
+		INSERT INTO USER (USERNAME, PASSWORD, JOIN_DATE)
+				VALUES (#{username}, #{password}, #{joinDate})
+	</insert>
+	
 </mapper>
