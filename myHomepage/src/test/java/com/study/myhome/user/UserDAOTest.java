@@ -37,7 +37,7 @@ public class UserDAOTest {
 	 */
 	@Test
 	public void test1GetUser() throws Exception {
-		List<UserVO> list = userDAO.getUsers();
+		List<UserVO> list = userDAO.getUsers(new UserVO());
 		list.forEach(user -> {
 			LOG.info("user : {} . {} . {}", user.getUsername(),
 					user.getPassword(), user.getJoinDate());
