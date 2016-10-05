@@ -4,7 +4,7 @@
 <mapper namespace="UserDAO">
 	
 	<!-- 사용자 조회 -->
-	<select id="selectUsers" resultType="UserVO">
+	<select id="selectUsers" parameterType="UserVO" resultType="UserVO">
 		SELECT * FROM (
 			SELECT 	ROWNUM() row,
 					USERNAME,

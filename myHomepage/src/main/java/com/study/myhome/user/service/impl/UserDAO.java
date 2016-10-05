@@ -17,8 +17,8 @@ public class UserDAO extends CommonDAO {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<UserVO> getUsers() throws Exception {
-		return sessionTemplate.selectList("UserDAO.selectUsers");
+	public List<UserVO> getUsers(UserVO userVO) throws Exception {
+		return sessionTemplate.selectList("UserDAO.selectUsers", userVO);
 	}
 	
 	/**

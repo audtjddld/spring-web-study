@@ -18,7 +18,7 @@ public class Pageable {
 	private int lastIndex;
 	
 	// 페이지 당 갯수
-	private int recordCountPerPage;
+	private int recordCountPerPage = 10;
 	
 	public int getP() {
 		return p;

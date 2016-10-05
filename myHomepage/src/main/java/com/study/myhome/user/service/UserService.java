@@ -1,5 +1,7 @@
 package com.study.myhome.user.service;
 
-public interface UserService {
+import java.util.Map;
 
+public interface UserService {
+	public Map<String, Object> getUsers(UserVO userVO) throws Exception;
 }
