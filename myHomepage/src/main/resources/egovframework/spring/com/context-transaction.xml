@@ -6,7 +6,7 @@
 	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 
-    <!-- transaction 설정 -->
+    <!-- transaction 설정 JTA 설정-->
 	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 	  <property name="dataSource" ref="dataSource"/>
 	</bean>
@@ -16,9 +16,9 @@
 			<tx:method name="*" rollback-for="Exception"/>
 		</tx:attributes>
 	</tx:advice>
-    
+    <!-- transaction 위치를 com.study.myhome 패키지 중 클래스 이름이 Impl이 포함된 객체 메서드에서 익셉션 발생시로 포인트 컷을 설정 -->
 	<aop:config>
-		<aop:pointcut id="requiredTx" expression="execution(* egovframework.let..impl.*Impl.*(..)) or execution(* com.study.myhome..*Impl.*(..))"/>
+		<aop:pointcut id="requiredTx" expression="execution(* com.study.myhome..*Impl.*(..))"/>
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="requiredTx" />
 	</aop:config>
 

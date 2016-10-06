@@ -11,6 +11,9 @@
 					PASSWORD,
 					JOIN_DATE
 				FROM USER
+			<if test="username != null">
+				WHERE username = #{username}
+			</if>
 		) WHERE row BETWEEN #{firstIndex} + 1  AND #{firstIndex} + #{recordCountPerPage}
 	</select>
 	
@@ -25,5 +28,14 @@
 		INSERT INTO USER (USERNAME, PASSWORD, JOIN_DATE)
 				VALUES (#{username}, #{password}, #{joinDate})
 	</insert>
+	<!-- 권한 입력 -->
+	
+	<!-- 사용자 조회 -->
+	<select id="selectUser" parameterType="java.lang.String" resultType="UserVO">
+		SELECT  USERNAME,
+				PASSWORD
+			FROM USER
+			 WHERE USERNAME = #{value}
+	</select>
 	
 </mapper>

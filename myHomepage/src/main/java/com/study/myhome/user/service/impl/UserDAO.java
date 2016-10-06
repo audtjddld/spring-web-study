@@ -17,7 +17,7 @@ public class UserDAO extends CommonDAO {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<UserVO> getUsers(UserVO userVO) throws Exception {
+	public List<UserVO> findUsers(UserVO userVO) throws Exception {
 		return sessionTemplate.selectList("UserDAO.selectUsers", userVO);
 	}
 	
@@ -41,5 +41,17 @@ public class UserDAO extends CommonDAO {
 	 */
 	public void insertUser(UserVO userVO) throws Exception {
 		sessionTemplate.insert("UserDAO.insertUser", userVO);
+	}
+	
+	/**
+	 * 사용자 조회
+	 * @author 정명성
+	 * create date : 2016. 10. 6.
+	 * @param username
+	 * @return
+	 * @throws Exception
+	 */
+	public UserVO findUser(String username) throws Exception {
+		return sessionTemplate.selectOne("UserDAO.selectUser", username);
 	}
 }

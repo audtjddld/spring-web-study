@@ -16,6 +16,12 @@ public class UserVO extends Pageable {
 		this.joinDate = new Date();
 	}
 
+	public UserVO(String username, String password) {
+		this.username = username;
+		this.password = password;
+		this.joinDate = new Date();
+	}
+
 	@Size(min = 4, max = 10)
 	@NotNull
 	private String username;

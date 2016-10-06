@@ -21,6 +21,7 @@
 	<!-- query mapper -->
 	<mappers>
 		<mapper resource="egovframework/sqlmap/user/user_sql.xml" />
+		<mapper resource="egovframework/sqlmap/user/user_authority_sql.xml" />
 	</mappers>
 	
 </configuration>

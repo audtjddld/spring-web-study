@@ -89,7 +89,7 @@ public class UserController {
 		BeanUtils.copyProperties(paginationInfo, userVO);
 
 		// list와 전체 페이징 갯수를 가져와야 한다.
-		Map resultMap = userService.getUsers(userVO);
+		Map resultMap = userService.findUsers(userVO);
 		// total 갯수
 		int totalCnt = (int) resultMap.get("totalCnt");
 
