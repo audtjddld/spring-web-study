@@ -1,6 +1,8 @@
 package com.study.myhome.user.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +21,11 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserAuthorityService userAuthorityService;
-	
+
 	/**
 	 * 사용자 리스트 가져오기
-	 * @author 정명성
-	 * create date : 2016. 10. 5.
+	 * 
+	 * @author 정명성 create date : 2016. 10. 5.
 	 * @return
 	 * @throws Exception
 	 */
@@ -33,23 +35,24 @@ public class UserServiceImpl implements UserService {
 		map.put("totalCnt", userDAO.getTotalUser());
 		return map;
 	}
-	
+
 	/**
 	 * 사용자 정보 입력
-	 * @author 정명성
-	 * create date : 2016. 10. 6.
+	 * 
+	 * @author 정명성 create date : 2016. 10. 6.
 	 * @param userVO
 	 * @throws Exception
 	 */
-	public void insertUsers(UserVO userVO, UserAuthorityVO userAuthorityVO) throws Exception {
+	public void insertUsers(UserVO userVO, UserAuthorityVO userAuthorityVO)
+			throws Exception {
 		userDAO.insertUser(userVO);
 		userAuthorityService.insertUserAuthority(userAuthorityVO);
 	}
-	
+
 	/**
 	 * 사용자 정보 조회
-	 * @author 정명성
-	 * create date : 2016. 10. 6.
+	 * 
+	 * @author 정명성 create date : 2016. 10. 6.
 	 * @param username
 	 * @return
 	 * @throws Exception
@@ -57,4 +60,5 @@ public class UserServiceImpl implements UserService {
 	public UserVO findUser(String username) throws Exception {
 		return userDAO.findUser(username);
 	}
+
 }
