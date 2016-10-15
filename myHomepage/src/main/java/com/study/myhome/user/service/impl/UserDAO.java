@@ -51,7 +51,7 @@ public class UserDAO extends CommonDAO {
 	 * @return
 	 * @throws Exception
 	 */
-	public UserVO findUser(String username) throws Exception {
-		return sessionTemplate.selectOne("UserDAO.selectUser", username);
+	public UserVO findUser(UserVO userVO) throws Exception {
+		return sessionTemplate.selectOne("UserDAO.selectUser", userVO);
 	}
 }

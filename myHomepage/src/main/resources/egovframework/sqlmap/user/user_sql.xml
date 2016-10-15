@@ -31,11 +31,11 @@
 	<!-- 권한 입력 -->
 	
 	<!-- 사용자 조회 -->
-	<select id="selectUser" parameterType="java.lang.String" resultType="UserVO">
+	<select id="selectUser" parameterType="UserVO" resultType="UserVO">
 		SELECT  USERNAME,
 				PASSWORD
 			FROM USER
-			 WHERE USERNAME = #{value}
+			 WHERE USERNAME = #{username}
+			  AND PASSWORD = #{password}
 	</select>
-	
 </mapper>

@@ -1,6 +1,5 @@
 package com.study.myhome.user.web;
 
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,14 +13,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.study.myhome.common.service.PaginationInfoMapping;
+import com.study.myhome.user.service.UserAuthorityVO;
 import com.study.myhome.user.service.UserService;
 import com.study.myhome.user.service.UserVO;
 
+import egovframework.com.cmm.LoginVO;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 @Controller
@@ -36,14 +36,25 @@ public class UserController {
 	private UserService userService;
 
 	/**
+	 * 회원 가입 페이지
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/user/join.do")
+	public String join() {
+		return "user/join.myhome";
+	}
+
+	/**
 	 * 회원 가입
 	 * 
 	 * @author 정명성
 	 * @create date : 2016. 9. 27.
 	 */
-	@RequestMapping(value = "/user/join.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/user/join/action.do", method = RequestMethod.POST)
 	public String join(@Valid @ModelAttribute("userVO") UserVO userVO,
-			BindingResult biResult) throws Exception {
+			BindingResult biResult, UserAuthorityVO userAuthorityVO)
+			throws Exception {
 		if (biResult.hasErrors()) {
 			LOG.info("Validation Error!!");
 			System.out.println(biResult.getFieldError());
@@ -51,12 +62,16 @@ public class UserController {
 			// BadRequestException(biResult.getAllErrors().toString());
 			return "redirect:/index.do";
 		}
+		// 사용자 정보 조회
+
+		userService.insertUsers(userVO, userAuthorityVO);
+
 		LOG.info("goView");
 		return "redirect:/index.do";
 	}
 
 	/**
-	 * 사용자 로그인
+	 * 사용자 로그인 페이지
 	 * 
 	 * @author 정명성
 	 * @create date : 2016. 10. 4.
@@ -66,6 +81,35 @@ public class UserController {
 	public String login() {
 
 		return "user/login.myhome";
+	}
+
+	/**
+	 * 로그인 처리
+	 * 
+	 * @param userVO
+	 * @return
+	 */
+	@RequestMapping(value = "/user/login/action.do")
+	public String loginAction(HttpServletRequest reqeust,
+			@Valid @ModelAttribute UserVO userVO, BindingResult biresult)
+			throws Exception {
+		// 파라미터 검증
+		if (biresult.hasErrors()) {
+			return "redirect:/user/login.do?result=parameter";
+		}
+		// 사용자 정보 조회
+		UserVO user = userService.findUser(userVO);
+
+		if (user == null) {
+			return "redirect:/user/login.do?result=notFound";
+		}
+
+		LoginVO loginVO = new LoginVO();
+		BeanUtils.copyProperties(loginVO, user);
+
+		reqeust.getSession().setAttribute("LoginVO", loginVO);
+
+		return "redirect:/index.do";
 	}
 
 	/**
@@ -80,7 +124,8 @@ public class UserController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/user/list.do")
-	public String userList(HttpServletRequest request,	PaginationInfo paginationInfo, UserVO userVO, ModelMap modelMap)
+	public String userList(HttpServletRequest request,
+			PaginationInfo paginationInfo, UserVO userVO, ModelMap modelMap)
 			throws Exception {
 
 		/**

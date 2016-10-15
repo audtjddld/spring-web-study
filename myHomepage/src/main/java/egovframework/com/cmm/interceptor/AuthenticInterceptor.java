@@ -41,10 +41,11 @@ public class AuthenticInterceptor extends WebContentInterceptor {
 		// 로그인 세션 객체 가져옴.
 		LoginVO loginVO = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 
-		if (loginVO.getId() != null) {
+		if (loginVO.getUsername() != null) {
 			return true;
 		} else {
-			// ModelAndViewDefiningException 은 view로 이동시켜준다. prehandler의 반환형은 boolean 형이지만 아래 Exception으로 처리하는 것이 깔끔한것 같다.
+			// ModelAndViewDefiningException 은 view로 이동시켜준다. prehandler의 반환형은
+			// boolean 형이지만 아래 Exception으로 처리하는 것이 깔끔한것 같다.
 			ModelAndView modelAndView = new ModelAndView("redirect:/index.do");
 			throw new ModelAndViewDefiningException(modelAndView);
 		}

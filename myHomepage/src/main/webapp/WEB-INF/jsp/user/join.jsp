@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <div class="container">
-	<form name="form" action="/user/login/action.do" method="post">
+	<form name="form" action="/user/join/action.do" method="post">
 		<div class="col-md-6 col-md-offset-3">
 			<table class="table table-bordered">
 				<tr>
@@ -14,14 +14,14 @@
 				</tr>
 			</table>
 			<div style="text-align: right;">
-				<button class="btn" onclick="login()">로그인</button>
+				<button class="btn" onclick="join()">회원가입</button>
 			</div>
 		</div>
 	</form>
 </div>
 
 <script type="text/javascript">
-	function login() {
+	function join() {
 		var form = $("form");
 		var username = $("[name='username']").val();
 		var password = $("[name='password']").val();
@@ -32,17 +32,6 @@
 			event.preventDefault();
 			return;
 		}
-
 		form.submit();
 	}
-
-	$(function() {
-		var result = '${result}';
-		if (result == 'parameter') {
-			alert('username // password 를 확인해주세요.');
-		}
-		if (result == 'notFound') {
-			alert('사용자 정보가 존재하지 않습니다.');
-		}
-	})
 </script>

@@ -1,13 +1,12 @@
 package com.study.myhome.user.service.impl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.study.myhome.common.exception.BadRequestException;
 import com.study.myhome.user.service.UserAuthorityService;
 import com.study.myhome.user.service.UserAuthorityVO;
 import com.study.myhome.user.service.UserService;
@@ -57,8 +56,7 @@ public class UserServiceImpl implements UserService {
 	 * @return
 	 * @throws Exception
 	 */
-	public UserVO findUser(String username) throws Exception {
-		return userDAO.findUser(username);
+	public UserVO findUser(UserVO userVO) throws Exception {
+		return userDAO.findUser(userVO);
 	}
-
 }

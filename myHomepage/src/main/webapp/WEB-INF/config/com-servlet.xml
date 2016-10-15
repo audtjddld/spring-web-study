@@ -30,14 +30,13 @@
 	-->
 	<bean
 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-		<property name="defaultErrorView" value="cmm/error/egovError" />
 		<property name="exceptionMappings">
 			<props>
 				<!-- 
 				<prop key="org.springframework.dao.DataAccessException">cmm/error/dataAccessFailure</prop>
 				<prop key="org.springframework.transaction.TransactionException">cmm/error/transactionFailure</prop>
 				 -->
-				 <prop key="com.study.myhome.common.exception.BadRequestException">error/blank</prop>
+				 <prop key="com.study.myhome.common.exception.BadRequestException">error/paramterError</prop>
 			</props>
 		</property>
 	</bean>
