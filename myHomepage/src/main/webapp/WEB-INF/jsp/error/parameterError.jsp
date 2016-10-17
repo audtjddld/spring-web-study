@@ -6,7 +6,7 @@
 <html lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><fmt:message key="Globals.SITENAME" /></title>
+<title>Parameter Error</title>
 
 </head>
 <body onload="init();">

@@ -36,7 +36,7 @@
 				<prop key="org.springframework.dao.DataAccessException">cmm/error/dataAccessFailure</prop>
 				<prop key="org.springframework.transaction.TransactionException">cmm/error/transactionFailure</prop>
 				 -->
-				 <prop key="com.study.myhome.common.exception.BadRequestException">error/paramterError</prop>
+				 <prop key="com.study.myhome.common.exception.BadRequestException">error/parameterError</prop>
 			</props>
 		</property>
 	</bean>

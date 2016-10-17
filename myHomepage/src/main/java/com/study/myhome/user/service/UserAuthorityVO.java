@@ -1,10 +1,13 @@
 package com.study.myhome.user.service;
 
+import javax.validation.constraints.NotNull;
+
 import org.apache.ibatis.type.Alias;
 
 @Alias("UserAuthorityVO")
 public class UserAuthorityVO {
 	
+	@NotNull
 	private String username;
 	
 	private AdminYN admin_yn = AdminYN.N;

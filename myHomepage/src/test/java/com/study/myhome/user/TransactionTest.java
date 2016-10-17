@@ -52,7 +52,9 @@ public class TransactionTest {
 	 */
 	@Test
 	public void test2CheckTransactionFindUserInfo() throws Exception {
-		UserVO userVO = userService.findUser("test");
+		UserVO userVO = new UserVO();
+		userVO.setUsername("test");
+		userVO = userService.findUser(userVO);
 		Assert.isNull(userVO);
 	}
 }

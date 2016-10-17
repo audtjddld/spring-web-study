@@ -44,8 +44,12 @@ public class UserServiceImpl implements UserService {
 	 */
 	public void insertUsers(UserVO userVO, UserAuthorityVO userAuthorityVO)
 			throws Exception {
-		userDAO.insertUser(userVO);
-		userAuthorityService.insertUserAuthority(userAuthorityVO);
+		try {
+			userDAO.insertUser(userVO);
+			userAuthorityService.insertUserAuthority(userAuthorityVO);
+		} catch (Exception e) {
+			throw (BadRequestException) e;
+		}
 	}
 
 	/**
@@ -59,4 +63,5 @@ public class UserServiceImpl implements UserService {
 	public UserVO findUser(UserVO userVO) throws Exception {
 		return userDAO.findUser(userVO);
 	}
+
 }
