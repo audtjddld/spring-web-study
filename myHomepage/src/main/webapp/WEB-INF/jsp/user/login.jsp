@@ -14,6 +14,7 @@
 				</tr>
 			</table>
 			<div style="text-align: right;">
+				<a class="btn btn-warning" href="/user/join.do">회원가입</a>
 				<button class="btn" onclick="login()">로그인</button>
 			</div>
 		</div>

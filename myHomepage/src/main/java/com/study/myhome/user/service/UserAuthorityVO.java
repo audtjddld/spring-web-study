@@ -4,6 +4,9 @@ import javax.validation.constraints.NotNull;
 
 import org.apache.ibatis.type.Alias;
 
+import com.study.myhome.enums.AdminYN;
+import com.study.myhome.menu.service.MenuVO;
+
 @Alias("UserAuthorityVO")
 public class UserAuthorityVO {
 	
@@ -12,6 +15,17 @@ public class UserAuthorityVO {
 	
 	private AdminYN admin_yn = AdminYN.N;
 	
+	// 권한별 메뉴
+	private MenuVO menus;
+	
+	public MenuVO getMenus() {
+		return menus;
+	}
+
+	public void setMenus(MenuVO menus) {
+		this.menus = menus;
+	}
+
 	public String getUsername() {
 		return username;
 	}

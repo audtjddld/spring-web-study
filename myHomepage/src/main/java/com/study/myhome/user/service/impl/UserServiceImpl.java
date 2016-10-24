@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.study.myhome.common.exception.BadRequestException;
+import com.study.myhome.enums.AdminYN;
+import com.study.myhome.enums.AuthorityMenu;
+import com.study.myhome.menu.service.MenuService;
+import com.study.myhome.menu.service.MenuVO;
 import com.study.myhome.user.service.UserAuthorityService;
 import com.study.myhome.user.service.UserAuthorityVO;
 import com.study.myhome.user.service.UserService;
@@ -20,6 +24,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserAuthorityService userAuthorityService;
+
+	@Autowired
+	private MenuService menuService;
 
 	/**
 	 * 사용자 리스트 가져오기
@@ -61,7 +68,42 @@ public class UserServiceImpl implements UserService {
 	 * @throws Exception
 	 */
 	public UserVO findUser(UserVO userVO) throws Exception {
-		return userDAO.findUser(userVO);
+		try {
+			
+			UserVO user = userDAO.findUser(userVO);
+			if (user == null) {
+				throw new BadRequestException("사용자가 존재하지 않습니다. username : "	+ userVO.getUsername());
+			}
+			UserAuthorityVO userAuthority = userAuthorityService.findUserAuthority(user);
+			setMenu(userAuthority);
+			user.setUserAuthority(userAuthority);
+
+			return user;
+		} catch (BadRequestException e) {
+			throw e;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	/**
+	 * 메뉴 저장
+	 * @author 정명성
+	 * create date : 2016. 10. 24.
+	 * @param userAuthority
+	 * @throws Exception
+	 */
+	private void setMenu(UserAuthorityVO userAuthority) throws Exception {
+		MenuVO menu;
+		if (userAuthority.getAdmin_yn().equals(AdminYN.Y)) {
+			menu = menuService.findMenus(new MenuVO(AuthorityMenu.ADMIN));
+		} else {
+			menu = menuService.findMenus(new MenuVO(AuthorityMenu.MEMBER));
+		}
+		if (menu != null) {
+			userAuthority.setMenus(menu);
+		}
 	}
 
 }

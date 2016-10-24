@@ -17,8 +17,8 @@ public class UserAuthorityDAO extends CommonDAO {
 	 * @param userVO
 	 * @return
 	 */
-	public List<UserAuthorityVO> getUserAuthorities(UserVO userVO) {
-		return sessionTemplate.selectList("UserAuthorityDAO.selectUserAuthorities", userVO);
+	public UserAuthorityVO getUserAuthority(UserVO userVO) {
+		return sessionTemplate.selectOne("UserAuthorityDAO.selectUserAuthorities", userVO);
 	}
 	
 	/**

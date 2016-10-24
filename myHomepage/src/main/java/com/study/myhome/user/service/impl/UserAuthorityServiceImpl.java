@@ -23,8 +23,8 @@ public class UserAuthorityServiceImpl implements UserAuthorityService {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<UserAuthorityVO> findUserAuthorities(UserVO userVO) throws Exception {
-		return userAuthorityDAO.getUserAuthorities(userVO);
+	public UserAuthorityVO findUserAuthority(UserVO userVO) throws Exception {
+		return userAuthorityDAO.getUserAuthority(userVO);
 	}
 	
 	/**

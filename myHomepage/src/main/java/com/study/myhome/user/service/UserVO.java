@@ -3,7 +3,6 @@ package com.study.myhome.user.service;
 import java.util.Date;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.apache.ibatis.type.Alias;
 
@@ -11,7 +10,11 @@ import com.study.myhome.common.service.Pageable;
 
 @Alias("UserVO")
 public class UserVO extends Pageable {
-
+	
+	{
+		joinDate = new Date();
+	}
+	
 	// @Size(min = 4, max = 10)
 	@NotNull
 	private String username;
@@ -20,6 +23,24 @@ public class UserVO extends Pageable {
 	private String password;
 
 	private Date joinDate;
+
+	private UserAuthorityVO userAuthority;
+
+	
+	public UserVO(String username, String password,	UserAuthorityVO userAuthority) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.userAuthority = userAuthority;
+	}
+
+	public UserAuthorityVO getUserAuthority() {
+		return userAuthority;
+	}
+
+	public void setUserAuthority(UserAuthorityVO userAuthority) {
+		this.userAuthority = userAuthority;
+	}
 
 	public String getUsername() {
 		return username;
@@ -39,10 +60,6 @@ public class UserVO extends Pageable {
 
 	public Date getJoinDate() {
 		return joinDate;
-	}
-
-	public void setJoinDate(Date joinDate) {
-		this.joinDate = joinDate;
 	}
 
 	public UserVO() {

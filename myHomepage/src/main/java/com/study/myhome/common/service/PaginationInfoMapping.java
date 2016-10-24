@@ -17,6 +17,10 @@ public class PaginationInfoMapping {
      */
     public void setPaginationInfo(PaginationInfo paginationInfo, Object obj) throws Exception{
         
+    	if(paginationInfo == null || obj == null) {
+    		throw new Exception("parameter가 올바르지 않습니다.");
+    	}
+    	
         // 필드
         Field [] f = obj.getClass().getSuperclass().getDeclaredFields();
         Method m = null;

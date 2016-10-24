@@ -3,6 +3,7 @@ package com.study.myhome.user.web;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.commons.beanutils.BeanUtils;
@@ -107,8 +108,10 @@ public class UserController {
 		LoginVO loginVO = new LoginVO();
 		BeanUtils.copyProperties(loginVO, user);
 
-		reqeust.getSession().setAttribute("LoginVO", loginVO);
-
+		HttpSession session = reqeust.getSession(); 
+		session.setAttribute("LoginVO", loginVO);
+		session.setAttribute("authority", user.getUserAuthority());
+		
 		return "redirect:/index.do";
 	}
 
