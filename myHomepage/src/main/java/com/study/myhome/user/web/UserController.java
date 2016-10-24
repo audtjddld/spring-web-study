@@ -110,7 +110,6 @@ public class UserController {
 
 		HttpSession session = reqeust.getSession(); 
 		session.setAttribute("LoginVO", loginVO);
-		session.setAttribute("authority", user.getUserAuthority());
 		
 		return "redirect:/index.do";
 	}

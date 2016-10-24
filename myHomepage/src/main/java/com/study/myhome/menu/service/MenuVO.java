@@ -8,21 +8,21 @@ import com.study.myhome.enums.AuthorityMenu;
 
 @Alias("MenuVO")
 public class MenuVO {
-	
+
+	private int menu_idx;
+
+	private String menu_name;
+
+	private List<MenuDetailVO> menuDetails;
+
 	public MenuVO() {
-		
+
 	}
-	
+
 	public MenuVO(AuthorityMenu authorityMenu) {
 		super();
 		this.menu_idx = authorityMenu.ordinal();
 	}
-
-	private int menu_idx;
-	
-	private String menu_name;
-
-	private List<MenuDetailVO> menuDetails;
 
 	public int getMenu_idx() {
 		return menu_idx;

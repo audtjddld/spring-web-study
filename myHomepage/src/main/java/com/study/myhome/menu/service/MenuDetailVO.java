@@ -4,13 +4,13 @@ import org.apache.ibatis.type.Alias;
 
 @Alias("MenuDetailVO")
 public class MenuDetailVO {
-	
+
 	private int menu_idx;
-	
+
 	private String menu_name;
 
 	private String url;
-	
+
 	public String getUrl() {
 		return url;
 	}
