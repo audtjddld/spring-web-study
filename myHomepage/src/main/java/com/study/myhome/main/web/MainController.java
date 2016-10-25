@@ -7,13 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class MainController {
-	
+
 	private static Logger LOG = LoggerFactory.getLogger(MainController.class);
-	
+
 	/**
 	 * 메인 페이지
+	 * 
 	 * @author 정명성
-	 * create date : 2016. 9. 26.
+	 * @create date : 2016. 10. 25.
 	 * @return
 	 */
 	@RequestMapping(value = "/index.do")
@@ -21,8 +22,7 @@ public class MainController {
 		LOG.info("goView");
 		return "main/index.myhome";
 	}
-	
-	
+
 	@RequestMapping(value = "/test.do")
 	public String index2() {
 		LOG.info("goView");

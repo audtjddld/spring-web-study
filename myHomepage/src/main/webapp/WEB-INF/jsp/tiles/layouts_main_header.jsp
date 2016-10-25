@@ -39,8 +39,9 @@ body {
 				</button>
 				<a class="navbar-brand" href="#">my blog</a>
 			</div>
-			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
+			<div id="navbar" class="collapse navbar-collapse"
+				style="float: left;">
+				<ul class="nav navbar-nav" style="float: left;">
 					<c:if test="${not empty menus}">
 						<c:forEach items="${menus}" var="menu">
 							<li><a href="${menu.url}" title="${menu.menu_name }">${menu.menu_name}</a></li>
@@ -48,6 +49,7 @@ body {
 					</c:if>
 				</ul>
 			</div>
+
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
