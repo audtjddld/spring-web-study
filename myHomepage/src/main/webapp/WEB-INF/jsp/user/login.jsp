@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <div class="container">
-	<form name="form" action="/user/login/action.do" method="post">
+	<form name="form" action="/login/action.do" method="post">
 		<div class="col-md-6 col-md-offset-3">
 			<table class="table table-bordered">
 				<tr>
@@ -14,7 +14,7 @@
 				</tr>
 			</table>
 			<div style="text-align: right;">
-				<a class="btn btn-warning" href="/user/join.do">회원가입</a>
+				<a class="btn btn-warning" href="/join.do">회원가입</a>
 				<button class="btn" onclick="login()">로그인</button>
 			</div>
 		</div>

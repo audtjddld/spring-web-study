@@ -10,11 +10,11 @@ import com.study.myhome.common.service.Pageable;
 
 @Alias("UserVO")
 public class UserVO extends Pageable {
-	
+
 	{
 		joinDate = new Date();
 	}
-	
+
 	// @Size(min = 4, max = 10)
 	@NotNull
 	private String username;
@@ -26,8 +26,12 @@ public class UserVO extends Pageable {
 
 	private UserAuthorityVO userAuthority;
 
-	
-	public UserVO(String username, String password,	UserAuthorityVO userAuthority) {
+	public UserVO(String username) {
+		super();
+		this.username = username;
+	}
+
+	public UserVO(String username, String password, UserAuthorityVO userAuthority) {
 		super();
 		this.username = username;
 		this.password = password;

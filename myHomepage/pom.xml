@@ -165,13 +165,6 @@
 		</dependency>
 		<!-- json view 끝 -->
 
-		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>1.4.190</version>
-		</dependency>
-
 		<!-- 타일즈 -->
 		<dependency>
 			<groupId>commons-digester</groupId>

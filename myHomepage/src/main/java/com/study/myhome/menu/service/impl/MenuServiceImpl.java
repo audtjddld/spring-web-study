@@ -23,8 +23,7 @@ public class MenuServiceImpl implements MenuService {
 		try {
 			menu = menuDAO.findMenus(menuVO);
 			if (menu == null) {
-				throw new BadRequestException("메뉴가 존재하지 않습니다. menu_idx : "
-						+ menuVO.getMenu_idx());
+				throw new BadRequestException("메뉴가 존재하지 않습니다. menu_idx : " + menuVO.getMenu_idx());
 			}
 
 			List<MenuDetailVO> menuDetails = menuDAO.findMenuDetails(menu.getMenu_idx());
@@ -34,7 +33,7 @@ public class MenuServiceImpl implements MenuService {
 			}
 
 		} catch (Exception e) {
-			//e.printStackTrace();
+			// e.printStackTrace();
 			throw (BadRequestException) e;
 		}
 

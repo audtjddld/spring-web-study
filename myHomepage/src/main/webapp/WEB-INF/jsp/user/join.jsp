@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <div class="container">
-	<form name="form" action="/user/join/action.do" method="post">
+	<form name="form" action="/join/action.do" method="post">
 		<div class="col-md-6 col-md-offset-3">
 			<table class="table table-bordered">
 				<tr>

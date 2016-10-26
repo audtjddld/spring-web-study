@@ -24,18 +24,21 @@ public class MenuInfoInterceptor extends WebContentInterceptor {
 	private MenuService menuService;
 
 	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)
-			throws Exception {
+	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)	throws Exception {
 
 		LOG.info("menuInterceptor postHandle");
 		MenuVO menu;
 		if (EgovUserDetailsHelper.isAuthenticated()) {
 			LoginVO loginVO = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
-			menu = menuService.findMenus(new MenuVO(AuthorityMenu.values()[loginVO.getUserAuthority().getMenus().getMenu_idx()]));
+			int menu_idx = loginVO.getUserAuthority().getMenus().getMenu_idx();
+			menu = menuService.findMenus(new MenuVO(AuthorityMenu.values()[menu_idx]));
 		} else {
 			menu = menuService.findMenus(new MenuVO(AuthorityMenu.NONMEMBER));
 		}
 
+		LOG.info("menuIdx : {}" , menu.getMenu_idx());
+		
+		request.setAttribute("menuIdx", menu.getMenu_idx());
 		request.setAttribute("menus", menu.getMenuDetails());
 	}
 
