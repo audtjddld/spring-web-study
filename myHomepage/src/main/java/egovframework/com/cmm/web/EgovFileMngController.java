@@ -3,18 +3,21 @@ package egovframework.com.cmm.web;
 import java.util.List;
 import java.util.Map;
 
-import egovframework.com.cmm.service.EgovFileMngService;
-import egovframework.com.cmm.service.FileVO;
-import egovframework.com.cmm.util.EgovUserDetailsHelper;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartRequest;
+
+import egovframework.com.cmm.service.EgovFileMngService;
+import egovframework.com.cmm.service.EgovFileMngUtil;
+import egovframework.com.cmm.service.FileVO;
+import egovframework.com.cmm.util.EgovUserDetailsHelper;
 
 /**
  * 파일 조회, 삭제, 다운로드 처리를 위한 컨트롤러 클래스
@@ -154,5 +157,22 @@ public class EgovFileMngController {
 		model.addAttribute("fileList", result);
 
 		return "cmm/fms/EgovImgFileList";
+	}
+
+	@Autowired
+	private EgovFileMngUtil fileMngUtils;
+
+	/**
+	 * 
+	 * @author 정명성
+	 * @create date : 2016. 10. 28.
+	 * @param multipartRequest
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/common/file/upload.do")
+	public String saveFiles(MultipartRequest multipartRequest) throws Exception {
+
+		return null;
 	}
 }

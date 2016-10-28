@@ -26,7 +26,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 //import java.util.HashMap;
 
-import egovframework.com.cmm.util.EgovStringUtils;
+import egovframework.com.cmm.util.EgovStringUtil;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 import egovframework.rte.fdl.property.EgovPropertyService;
 
@@ -114,7 +114,7 @@ public class EgovFileMngUtil {
 	    int index = orginFileName.lastIndexOf(".");
 	    //String fileName = orginFileName.substring(0, index);
 	    String fileExt = orginFileName.substring(index + 1);
-	    String newName = KeyStr + EgovStringUtils.getTimeStamp() + fileKey;
+	    String newName = KeyStr + EgovStringUtil.getTimeStamp() + fileKey;
 	    long _size = file.getSize();
 
 	    if (!"".equals(orginFileName)) {
@@ -203,8 +203,8 @@ public class EgovFileMngUtil {
      */
     public static void downFile(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-    String downFileName = EgovStringUtils.isNullToString(request.getAttribute("downFile")).replaceAll("..","");
-    String orgFileName = EgovStringUtils.isNullToString(request.getAttribute("orgFileName")).replaceAll("..","");
+    String downFileName = EgovStringUtil.isNullToString(request.getAttribute("downFile")).replaceAll("..","");
+    String orgFileName = EgovStringUtil.isNullToString(request.getAttribute("orgFileName")).replaceAll("..","");
 
 	/*if ((String)request.getAttribute("downFile") == null) {
 	    downFileName = "";
@@ -309,8 +309,8 @@ public class EgovFileMngUtil {
     protected static void writeFile(MultipartFile file, String newName, String stordFilePath) throws Exception {
 	InputStream stream = null;
 	OutputStream bos = null;
-	newName = EgovStringUtils.isNullToString(newName).replaceAll("..", "");
-	stordFilePath = EgovStringUtils.isNullToString(stordFilePath).replaceAll("..", "");
+	newName = EgovStringUtil.isNullToString(newName).replaceAll("..", "");
+	stordFilePath = EgovStringUtil.isNullToString(stordFilePath).replaceAll("..", "");
 	try {
 	    stream = file.getInputStream();
 	    File cFile = new File(stordFilePath);
@@ -362,8 +362,8 @@ public class EgovFileMngUtil {
     public void downFile(HttpServletResponse response, String streFileNm, String orignFileNm) throws Exception {
     //	String downFileName = EgovStringUtils.isNullToString(request.getAttribute("downFile")).replaceAll("..","");
     //	String orgFileName = EgovStringUtils.isNullToString(request.getAttribute("orgFileName")).replaceAll("..","");
-    String downFileName = EgovStringUtils.isNullToString(streFileNm).replaceAll("..","");
-	String orgFileName = EgovStringUtils.isNullToString(orignFileNm).replaceAll("..","");
+    String downFileName = EgovStringUtil.isNullToString(streFileNm).replaceAll("..","");
+	String orgFileName = EgovStringUtil.isNullToString(orignFileNm).replaceAll("..","");
 
 	File file = new File(downFileName);
 	//log.debug(this.getClass().getName()+" downFile downFileName "+downFileName);
