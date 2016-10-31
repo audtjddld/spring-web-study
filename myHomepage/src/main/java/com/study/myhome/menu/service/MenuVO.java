@@ -12,7 +12,7 @@ public class MenuVO {
 	private int menu_idx;
 
 	private String menu_name;
-
+	// 메뉴 상세
 	private List<MenuDetailVO> menuDetails;
 
 	public MenuVO() {

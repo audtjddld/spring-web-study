@@ -22,8 +22,10 @@ public class UserVO extends Pageable {
 	@NotNull
 	private String password;
 
+	// 가입 날짜
 	private Date joinDate;
 
+	// 사용자 권한
 	private UserAuthorityVO userAuthority;
 
 	public UserVO(String username) {

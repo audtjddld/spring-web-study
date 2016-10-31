@@ -3,6 +3,7 @@ package com.study.myhome.user.service.impl;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -74,9 +75,11 @@ public class UserServiceImpl implements UserService {
 			if (user == null) {
 				throw new BadRequestException("사용자가 존재하지 않습니다. username : "	+ userVO.getUsername());
 			}
-			UserAuthorityVO userAuthority = userAuthorityService.findUserAuthority(user);
-			setMenu(userAuthority);
-			user.setUserAuthority(userAuthority);
+			// 권한 가져오기
+			setUserAuthority(user);
+			System.out.println(ToStringBuilder.reflectionToString(userVO.getUserAuthority()));
+			// 메뉴 가져오기
+			setMenu(user.getUserAuthority());
 
 			return user;
 		} catch (BadRequestException e) {
@@ -85,6 +88,21 @@ public class UserServiceImpl implements UserService {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	/**
+	 * 사용자 권한
+	 * @author 정명성
+	 * @create date : 2016. 10. 31.
+	 * @param user
+	 * @throws Exception
+	 */
+	private void setUserAuthority(UserVO user) throws Exception {
+		UserAuthorityVO userAuthority = userAuthorityService.findUserAuthority(user);
+		if(userAuthority == null) {
+			throw new BadRequestException("권한 정보가 없습니다. username : " + user.getUsername());
+		}
+		user.setUserAuthority(userAuthority);
 	}
 	
 	/**

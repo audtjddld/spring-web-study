@@ -3,6 +3,7 @@ package com.study.myhome.common.interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +26,12 @@ public class MenuInfoInterceptor extends WebContentInterceptor {
 
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)	throws Exception {
-
 		LOG.info("menuInterceptor postHandle");
+		
 		MenuVO menu;
 		if (EgovUserDetailsHelper.isAuthenticated()) {
 			LoginVO loginVO = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
+			//TODO 권한을 새로 갱신하는 구현해야 된다.
 			int menu_idx = loginVO.getUserAuthority().getMenus().getMenu_idx();
 			menu = menuService.findMenus(new MenuVO(AuthorityMenu.values()[menu_idx]));
 		} else {
