@@ -1,6 +1,6 @@
 package com.study.myhome.enums;
 
-public enum AuthorityMenu {
+public enum Authority {
 	NONMEMBER,
 	MEMBER,
 	ADMIN

@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.ModelAndViewDefiningException;
 
 import com.study.myhome.enums.AdminYN;
+import com.study.myhome.enums.Authority;
 import com.study.myhome.menu.service.MenuVO;
 
 import egovframework.com.cmm.LoginVO;
@@ -56,7 +57,7 @@ public class AdminUserSessionInterceptor extends SessionCheckInterceptor {
 	}
 
 	private void isAdmin(LoginVO loginVO) throws ModelAndViewDefiningException {
-		if (!loginVO.getUserAuthority().getAdmin_yn().equals(AdminYN.Y)) {
+		if (!loginVO.getUserAuthority().getAuthority().equals(Authority.ADMIN)) {
 			LOG.info("user is not admin");
 			ModelAndView modelAndView = new ModelAndView("redirect:/index.do");
 			throw new ModelAndViewDefiningException(modelAndView);

@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.WebContentInterceptor;
 
-import com.study.myhome.enums.AuthorityMenu;
+import com.study.myhome.enums.Authority;
 import com.study.myhome.menu.service.MenuService;
 import com.study.myhome.menu.service.MenuVO;
 
@@ -33,9 +33,9 @@ public class MenuInfoInterceptor extends WebContentInterceptor {
 			LoginVO loginVO = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 			//TODO 권한을 새로 갱신하는 구현해야 된다.
 			int menu_idx = loginVO.getUserAuthority().getMenus().getMenu_idx();
-			menu = menuService.findMenus(new MenuVO(AuthorityMenu.values()[menu_idx]));
+			menu = menuService.findMenus(new MenuVO(Authority.values()[menu_idx]));
 		} else {
-			menu = menuService.findMenus(new MenuVO(AuthorityMenu.NONMEMBER));
+			menu = menuService.findMenus(new MenuVO(Authority.NONMEMBER));
 		}
 
 		LOG.info("menuIdx : {}" , menu.getMenu_idx());

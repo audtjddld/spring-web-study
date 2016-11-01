@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndViewDefiningException;
 import org.springframework.web.servlet.mvc.WebContentInterceptor;
 
 import com.study.myhome.enums.AdminYN;
+import com.study.myhome.enums.Authority;
 
 import egovframework.com.cmm.LoginVO;
 import egovframework.com.cmm.util.EgovUserDetailsHelper;
@@ -55,7 +56,7 @@ public class NomalUserSessionInterceptor extends SessionCheckInterceptor {
 	}
 
 	private void isNomalUser(LoginVO loginVO) throws ModelAndViewDefiningException {
-		if (!loginVO.getUserAuthority().getAdmin_yn().equals(AdminYN.N)) {
+		if (!loginVO.getUserAuthority().getAuthority().equals(Authority.NONMEMBER)) {
 			LOG.info("user is not nomal user");
 			ModelAndView modelAndView = new ModelAndView("redirect:/index.do");
 			throw new ModelAndViewDefiningException(modelAndView);

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<h1>로그인</h1>	
 <div class="container">
 	<form name="form" action="/login/action.do" method="post">
 		<div class="col-md-6 col-md-offset-3">

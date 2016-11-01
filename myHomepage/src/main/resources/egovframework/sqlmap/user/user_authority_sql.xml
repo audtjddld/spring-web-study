@@ -6,15 +6,15 @@
 	<!-- 사용자 권한 조회 -->
 	<select id="selectUserAuthorities" parameterType="UserVO" resultType="UserAuthorityVO">
 		SELECT 	USERNAME,
-				ADMIN_YN
+				AUTHORITY
 			FROM USER_AUTHORITY
 			 WHERE USERNAME = #{username}
 	</select>
 	
 	<!-- 사용자 권한 입력 -->
 	<insert id="insertUserAuthority" parameterType="UserAuthorityVO">
-		INSERT INTO USER_AUTHORITY (USERNAME, ADMIN_YN)
-				VALUES (#{username}, #{admin_yn})
+		INSERT INTO USER_AUTHORITY (USERNAME, AUTHORITY)
+				VALUES (#{username}, #{authority})
 	</insert>
 	
 	

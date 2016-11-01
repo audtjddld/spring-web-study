@@ -25,6 +25,17 @@ body {
 	text-align: center;
 }
 </style>
+<c:if test="${sessionScope.LoginVO ne null }">
+	<script type="text/javascript">
+		//<![CDATA[
+		    function logout() {
+		    	if(confirm('로그아웃 하시겠습니까?')) {
+		    		location.href="/logout.do";
+		    	}
+		    }
+		//]]>
+	</script>
+</c:if>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -47,7 +58,13 @@ body {
 							<li><a href="${menu.url}" title="${menu.menu_name }">${menu.menu_name}</a></li>
 						</c:forEach>
 					</c:if>
+					<c:if test="${sessionScope.LoginVO ne null }">
+						<li>
+							<a href="#" onclick="logout()">로그아웃</a>
+						</li>
+					</c:if>
 				</ul>
+
 			</div>
 
 			<!--/.nav-collapse -->

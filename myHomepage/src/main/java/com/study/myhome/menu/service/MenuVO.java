@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.type.Alias;
 
-import com.study.myhome.enums.AuthorityMenu;
+import com.study.myhome.enums.Authority;
 
 @Alias("MenuVO")
 public class MenuVO {
@@ -19,7 +19,7 @@ public class MenuVO {
 
 	}
 
-	public MenuVO(AuthorityMenu authorityMenu) {
+	public MenuVO(Authority authorityMenu) {
 		super();
 		this.menu_idx = authorityMenu.ordinal();
 	}

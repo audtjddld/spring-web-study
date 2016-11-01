@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<h1>회원 정보</h1>
 <table class="table table-bordered">
 	<thead>
 		<tr>

@@ -16,6 +16,7 @@ import com.study.myhome.user.service.UserService;
 import com.study.myhome.user.service.UserVO;
 
 import egovframework.com.cmm.LoginVO;
+import egovframework.com.cmm.util.EgovUserDetailsHelper;
 
 @Controller
 public class LoginController {
@@ -63,6 +64,20 @@ public class LoginController {
 		HttpSession session = reqeust.getSession();
 		session.setAttribute("LoginVO", loginVO);
 
+		return "redirect:/index.do";
+	}
+	
+	/**
+	 * 로그아웃
+	 * @author 정명성
+	 * @create date : 2016. 11. 1.
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "/logout.do")
+	public String logout(HttpServletRequest request) {
+		request.getSession().setAttribute("LoginVO", null);
+		
 		return "redirect:/index.do";
 	}
 }

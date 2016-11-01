@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.study.myhome.common.exception.BadRequestException;
 import com.study.myhome.enums.AdminYN;
-import com.study.myhome.enums.AuthorityMenu;
+import com.study.myhome.enums.Authority;
 import com.study.myhome.menu.service.MenuService;
 import com.study.myhome.menu.service.MenuVO;
 import com.study.myhome.user.service.UserAuthorityService;
@@ -114,10 +114,10 @@ public class UserServiceImpl implements UserService {
 	 */
 	private void setMenu(UserAuthorityVO userAuthority) throws Exception {
 		MenuVO menu;
-		if (userAuthority.getAdmin_yn().equals(AdminYN.Y)) {
-			menu = menuService.findMenus(new MenuVO(AuthorityMenu.ADMIN));
+		if (userAuthority.getAuthority().equals(Authority.ADMIN)) {
+			menu = menuService.findMenus(new MenuVO(Authority.ADMIN));
 		} else {
-			menu = menuService.findMenus(new MenuVO(AuthorityMenu.MEMBER));
+			menu = menuService.findMenus(new MenuVO(Authority.MEMBER));
 		}
 		if (menu != null) {
 			userAuthority.setMenus(menu);
