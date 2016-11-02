@@ -52,7 +52,6 @@ public class AdminUserSessionInterceptor extends SessionCheckInterceptor {
 		// 관리자 체크
 		isAdmin(loginVO);
 		// 메뉴 체크
-
 		return true;
 	}
 
