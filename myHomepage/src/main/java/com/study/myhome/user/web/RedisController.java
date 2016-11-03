@@ -24,7 +24,8 @@ public class RedisController {
 
 	@RequestMapping(value = "/redis/list.do")
 	public void getList() {
-		System.out.println(listOps.getOperations().opsForList());
+		System.out.println(template.opsForValue());
+		System.out.println(template.opsForValue().toString());
 	}
 
 	@RequestMapping(value = "/redis/value.do")
@@ -32,7 +33,7 @@ public class RedisController {
 		System.out.println("key : " + key);
 		System.out.println(valueOps.get(key));
 	}
-	
+
 	@RequestMapping(value="/redis/setValue.do")
 	public void setValue() {
 		valueOps.set("name", "jms");

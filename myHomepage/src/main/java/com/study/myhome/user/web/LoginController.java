@@ -12,14 +12,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.study.myhome.common.service.impl.DuplicationLoginComponent;
 import com.study.myhome.user.service.UserService;
 import com.study.myhome.user.service.UserVO;
 
 import egovframework.com.cmm.LoginVO;
-import egovframework.com.cmm.util.EgovUserDetailsHelper;
 
 @Controller
-public class LoginController {
+public class LoginController extends DuplicationLoginComponent {
 
 	private static Logger LOG = LoggerFactory.getLogger(JoinController.class);
 
@@ -61,9 +61,11 @@ public class LoginController {
 		LoginVO loginVO = new LoginVO();
 		BeanUtils.copyProperties(loginVO, user);
 
+		
 		HttpSession session = reqeust.getSession();
 		session.setAttribute("LoginVO", loginVO);
-
+		setSession(session, loginVO.getUsername());
+		
 		return "redirect:/index.do";
 	}
 	
