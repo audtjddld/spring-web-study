@@ -35,6 +35,12 @@ public class UserAuthorityVO {
 		this.username = username;
 	}
 	
+	public UserAuthorityVO(String username, Authority authority) {
+		super();
+		this.username = username;
+		this.authority = authority;
+	}
+	
 	public UserAuthorityVO(String username, Authority authority, MenuVO menus) {
 		super();
 		this.username = username;

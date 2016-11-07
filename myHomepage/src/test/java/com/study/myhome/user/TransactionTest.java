@@ -11,6 +11,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.util.Assert;
 
 import com.study.myhome.enums.AdminYN;
+import com.study.myhome.enums.Authority;
 import com.study.myhome.user.service.UserAuthorityVO;
 import com.study.myhome.user.service.UserService;
 import com.study.myhome.user.service.UserVO;
@@ -39,7 +40,7 @@ public class TransactionTest {
 	public void test1Transaction () throws Exception {
 		
 		UserVO userVO = new UserVO("test","1234");
-		UserAuthorityVO userAuthorityVO = new UserAuthorityVO("test1", AdminYN.N);
+		UserAuthorityVO userAuthorityVO = new UserAuthorityVO("test1", Authority.ADMIN);
 		
 		userService.insertUsers(userVO, userAuthorityVO);
 	}
