@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BoardDAO">
+	
+	<!-- 게시판 리스트 -->
+	<select id="selectBoardList" parameterType="BoardVO" resultType="BoardVO">
+		SELECT * FROM (
+			SELECT 	ROWNUM() row,
+					IDX,
+					TITLE,
+					CONTENT,
+					VIEW_CNT,
+					ATCH_FILE_ID
+			FROM BOARD
+			 WHERE USE_YN = 'Y'
+		) WHERE row BETWEEN #{firstIndex} + 1  AND #{firstIndex} + #{recordCountPerPage}
+	</select>
+	
+	<select id="selectBoardListCnt" parameterType="BoardVO" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM BOARD
+	</select>
+	
+	<!-- 상세 조회 -->
+	<select id="selectBoardArticle" parameterType="BoardVO" resultType="BoardVO">
+		SELECT 	IDX,
+				TITLE,
+				CONTENT,
+				VIEW_CNT,
+				ATCH_FILE_ID
+			FROM BOARD
+			 WHERE IDX = #{idx}
+			   AND USE_YN = 'Y'
+	</select>
+	
+	<!-- 저장 -->
+	<insert id="insertBoardArticle" parameterType="BoardVO" >
+		INSERT INTO BOARD
+			(IDX, TITLE, CONTENT, VIEW_CNT, ATCH_FILE_ID, USE_YN)
+			 VALUES
+			(#{idx}, #{title}, #{content}, 0, #{atchFileId}, 'Y')
+	</insert>
+	
+	<!-- 삭제 -->
+	<update id="deleteBoardArticle" parameterType="BoardVO">
+		UPDATE BOARD SET
+			USE_YN = 'N'
+			 WHERE IDX = #{idx}
+	</update>
+	
+	<!-- 수정 -->
+	<update id="updateBoardArticle" parameterType="BoardVO" >
+		UPDATE BOARD SET
+			TITLE = #{title},
+			CONTENT = #{content}
+			
+			WHERE IDX = #{idx}
+	</update>
+	
+	<!-- 조회 카운트 증가 -->
+	<update id="updateBoardArticleCnt" parameterType="BoardVO" >
+		UPDATE BOARD SET
+		 VIEW_CNT = VIEW_CNT + 1
+		  WHERE IDX = #{idx}
+	</update>
+</mapper>

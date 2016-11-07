@@ -4,7 +4,6 @@ import javax.validation.constraints.NotNull;
 
 import org.apache.ibatis.type.Alias;
 
-import com.study.myhome.enums.AdminYN;
 import com.study.myhome.enums.Authority;
 import com.study.myhome.menu.service.MenuVO;
 

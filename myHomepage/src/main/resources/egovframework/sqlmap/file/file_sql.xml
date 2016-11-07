@@ -4,18 +4,24 @@
 <mapper namespace="FileManageDAO">
 
 	<select id="selectFileList" parameterType="FileVO" resultType="FileVO">
-		SELECT
-		a.ATCH_FILE_ID, b.FILE_CN, b.FILE_SN, b.FILE_STRE_COURS, b.STRE_FILE_NM,
-		b.FILE_EXTSN, b.ORIGNL_FILE_NM, b.FILE_SIZE, a.CREAT_DT
+		SELECT	a.ATCH_FILE_ID, 
+				b.FILE_CN, 
+				b.FILE_SN, 
+				b.FILE_STRE_COURS, 
+				b.STRE_FILE_NM,
+				b.FILE_EXTSN, 
+				b.ORIGNL_FILE_NM, 
+				b.FILE_SIZE, 
+				a.CREAT_DT
 		FROM
-		LETTNFILE a, LETTNFILEDETAIL b
+			LETTNFILE a, LETTNFILEDETAIL b
 		WHERE
-		a.ATCH_FILE_ID = #{atchFileId}
-		AND
-		a.ATCH_FILE_ID = b.ATCH_FILE_ID
-		AND
-		a.USE_AT = 'Y'
-		ORDER BY b.FILE_SN
+				a.ATCH_FILE_ID = #{atchFileId}
+			AND
+				a.ATCH_FILE_ID = b.ATCH_FILE_ID
+			AND
+				a.USE_AT = 'Y'
+			ORDER BY b.FILE_SN
 	</select>
 
 	<insert id="insertFileMaster" parameterType="FileVO">
@@ -27,37 +33,56 @@
 
 	<insert id="insertFileDetail" parameterType="FileVO">
 		INSERT INTO LETTNFILEDETAIL
-		( ATCH_FILE_ID, FILE_SN, FILE_STRE_COURS, STRE_FILE_NM,
-		ORIGNL_FILE_NM, FILE_EXTSN, FILE_SIZE, FILE_CN )
+		(
+			ATCH_FILE_ID, 
+			FILE_SN, 
+			FILE_STRE_COURS, 
+			STRE_FILE_NM,
+			ORIGNL_FILE_NM, 
+			FILE_EXTSN, 
+			FILE_SIZE, 
+			FILE_CN 
+		)
 		VALUES
-		( #{atchFileId}, #{fileSn}, #{fileStreCours}, #{streFileNm},
-		#{orignlFileNm}, #{fileExtsn}, #{fileMg}, #{fileCn} )
+		( 
+			#{atchFileId}, 
+			#{fileSn}, 
+			#{fileStreCours}, 
+			#{streFileNm},
+			#{orignlFileNm}, 
+			#{fileExtsn}, 
+			#{fileMg}, 
+			#{fileCn} 
+		)
 	</insert>
 
 	<delete id="deleteFileDetail" parameterType="FileVO">
 		DELETE FROM LETTNFILEDETAIL
 		WHERE
-		ATCH_FILE_ID = #{atchFileId}
+			ATCH_FILE_ID = #{atchFileId}
 		AND
-		FILE_SN = #{fileSn}
+			FILE_SN = #{fileSn}
 	</delete>
 
 	<select id="getMaxFileSN" parameterType="FileVO" resultType="java.lang.Integer">
 		SELECT IFNULL(MAX(FILE_SN),0)+1 AS FILE_SN
-		FROM LETTNFILEDETAIL
-		WHERE ATCH_FILE_ID = #{atchFileId}
+			FROM LETTNFILEDETAIL
+			WHERE ATCH_FILE_ID = #{atchFileId}
 	</select>
 
 	<select id="selectFileInf" parameterType="FileVO" resultType="FileVO">
-		SELECT
-		ATCH_FILE_ID, FILE_CN, FILE_SN, FILE_STRE_COURS, STRE_FILE_NM,
-		FILE_EXTSN, ORIGNL_FILE_NM, FILE_SIZE
-		FROM
-		LETTNFILEDETAIL
-		WHERE
-		ATCH_FILE_ID = #{atchFileId}
+		SELECT	ATCH_FILE_ID, 
+				FILE_CN, 
+				FILE_SN, 
+				FILE_STRE_COURS, 
+				STRE_FILE_NM,
+				FILE_EXTSN, 
+				ORIGNL_FILE_NM, 
+				FILE_SIZE
+		FROM LETTNFILEDETAIL
+			WHERE ATCH_FILE_ID = #{atchFileId}
 		AND
-		FILE_SN = #{fileSn}
+			FILE_SN = #{fileSn}
 	</select>
 
 	<update id="deleteCOMTNFILE" parameterType="FileVO">
@@ -68,15 +93,18 @@
 
 	<select id="selectFileListByFileNm" parameterType="FileVO"
 		resultType="FileVO">
-		SELECT
-		a.ATCH_FILE_ID, b.FILE_CN, b.FILE_SN, b.FILE_STRE_COURS, b.STRE_FILE_NM,
-		b.FILE_EXTSN, b.ORIGNL_FILE_NM, b.FILE_SIZE, a.CREAT_DT
-		FROM
-		LETTNFILE a, LETTNFILEDETAIL b
-		WHERE
-		a.ATCH_FILE_ID = b.ATCH_FILE_ID
-		AND
-		a.USE_AT = 'Y'
+		SELECT	a.ATCH_FILE_ID, 
+				b.FILE_CN, 
+				b.FILE_SN, 
+				b.FILE_STRE_COURS, 
+				b.STRE_FILE_NM,
+				b.FILE_EXTSN, 
+				b.ORIGNL_FILE_NM, 
+				b.FILE_SIZE, 
+				a.CREAT_DT
+		FROM LETTNFILE a, LETTNFILEDETAIL b
+		WHERE a.ATCH_FILE_ID = b.ATCH_FILE_ID
+		AND a.USE_AT = 'Y'
 		<if test="searchCnd == 'streFileNm'">
 			AND b.STRE_FILE_NM LIKE '%' || #{searchWrd} || '%'
 		</if>
@@ -89,14 +117,10 @@
 
 	<select id="selectFileListCntByFileNm" parameterType="FileVO"
 		resultType="java.lang.Integer">
-		SELECT
-		COUNT(a.ATCH_FILE_ID)
-		FROM
-		LETTNFILE a, LETTNFILEDETAIL b
-		WHERE
-		a.ATCH_FILE_ID = b.ATCH_FILE_ID
-		AND
-		a.USE_AT = 'Y'
+		SELECT	COUNT(a.ATCH_FILE_ID)
+		FROM LETTNFILE a, LETTNFILEDETAIL b
+		WHERE a.ATCH_FILE_ID = b.ATCH_FILE_ID
+		AND	a.USE_AT = 'Y'
 		<if test="searchCnd == 'streFileNm'">
 			AND b.STRE_FILE_NM LIKE '%' || #{searchWrd} || '%'
 		</if>
@@ -107,19 +131,20 @@
 
 	<select id="selectImageFileList" parameterType="FileVO"
 		resultType="FileVO">
-		SELECT
-		a.ATCH_FILE_ID, b.FILE_CN, b.FILE_SN, b.FILE_STRE_COURS, b.STRE_FILE_NM,
-		b.FILE_EXTSN, b.ORIGNL_FILE_NM, b.FILE_SIZE, a.CREAT_DT
-		FROM
-		LETTNFILE a, LETTNFILEDETAIL b
-		WHERE
-		a.ATCH_FILE_ID = #atchFileId#
-		AND
-		a.ATCH_FILE_ID = b.ATCH_FILE_ID
-		AND
-		UPPER(b.FILE_EXTSN) IN ('GIF','JPG','BMP','PNG')
-		AND
-		a.USE_AT = 'Y'
+		SELECT	a.ATCH_FILE_ID, 
+				b.FILE_CN, 
+				b.FILE_SN, 
+				b.FILE_STRE_COURS, 
+				b.STRE_FILE_NM,
+				b.FILE_EXTSN, 
+				b.ORIGNL_FILE_NM, 
+				b.FILE_SIZE, 
+				a.CREAT_DT
+		FROM LETTNFILE a, LETTNFILEDETAIL b
+		WHERE	a.ATCH_FILE_ID = #atchFileId#
+		AND		a.ATCH_FILE_ID = b.ATCH_FILE_ID
+		AND		UPPER(b.FILE_EXTSN) IN ('GIF','JPG','BMP','PNG')
+		AND		a.USE_AT = 'Y'
 		ORDER BY b.FILE_SN
 	</select>
 

@@ -10,13 +10,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.util.Assert;
 
-import com.study.myhome.enums.AdminYN;
 import com.study.myhome.enums.Authority;
 import com.study.myhome.user.service.UserAuthorityVO;
 import com.study.myhome.user.service.UserService;
 import com.study.myhome.user.service.UserVO;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {

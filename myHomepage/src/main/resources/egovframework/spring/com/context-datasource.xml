@@ -17,6 +17,7 @@
 	<!-- h2 database 선언  -->
 	<jdbc:embedded-database id="dataSource-h2" type="H2">
 		<!-- h2 database는 메모리기반 DB 이기 때문에 휘발성이다. 따라서 매번 실행시 Data를 넣어주는 형태로 동작한다. -->
+		<jdbc:script location="classpath:egovframework/db/board.sql" />
 		<jdbc:script location="classpath:egovframework/db/file.sql" />
 		<jdbc:script location="classpath:egovframework/db/user.sql" />
 		<jdbc:script location="classpath:egovframework/db/menu.sql" />
