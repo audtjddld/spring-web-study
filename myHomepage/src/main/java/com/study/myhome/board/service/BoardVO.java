@@ -1,5 +1,7 @@
 package com.study.myhome.board.service;
 
+import java.util.Date;
+
 import org.apache.ibatis.type.Alias;
 
 import com.study.myhome.common.service.Pageable;
@@ -17,6 +19,20 @@ public class BoardVO extends Pageable {
 	private String use_yn = "Y";
 
 	private String atchFileId;
+
+	private Date regdate;
+	
+	{
+		regdate = new Date();
+	}
+	
+	public Date getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
+	}
 
 	public Long getIdx() {
 		return idx;

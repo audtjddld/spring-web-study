@@ -11,7 +11,8 @@
 					TITLE,
 					CONTENT,
 					VIEW_CNT,
-					ATCH_FILE_ID
+					ATCH_FILE_ID,
+					REGDATE
 			FROM BOARD
 			 WHERE USE_YN = 'Y'
 		) WHERE row BETWEEN #{firstIndex} + 1  AND #{firstIndex} + #{recordCountPerPage}
@@ -27,7 +28,8 @@
 				TITLE,
 				CONTENT,
 				VIEW_CNT,
-				ATCH_FILE_ID
+				ATCH_FILE_ID,
+				REGDATE
 			FROM BOARD
 			 WHERE IDX = #{idx}
 			   AND USE_YN = 'Y'
@@ -36,9 +38,9 @@
 	<!-- 저장 -->
 	<insert id="insertBoardArticle" parameterType="BoardVO" >
 		INSERT INTO BOARD
-			(IDX, TITLE, CONTENT, VIEW_CNT, ATCH_FILE_ID, USE_YN)
+			(IDX, TITLE, CONTENT, VIEW_CNT, ATCH_FILE_ID, USE_YN, REGDATE)
 			 VALUES
-			(#{idx}, #{title}, #{content}, 0, #{atchFileId}, 'Y')
+			(#{idx}, #{title}, #{content}, 0, #{atchFileId}, 'Y', #{regdate})
 	</insert>
 	
 	<!-- 삭제 -->

@@ -1,17 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/jsp/common/el.jspf" %>
-<h1>회원 목록</h1>
+<h1>게시글 목록</h1>
 <table class="table table-bordered">
 	<thead>
 		<tr>
-			<th>username</th>
-			<th>password</th>
+			<th>No</th>
+			<th>title</th>
+			<th>regdate</th>
+			<th>read</th>
 		<tr>
 	</thead>
 	<c:forEach items="${list}" var="list">
-		<tr onclick="getUser('${list.username}')" style="cursor: pointer;">
-			<td>${list.username}</td>
-			<td>${fn:substring(list.password,0,2)}**</td>
+		<tr onclick="goView('${list.idx}')" style="cursor: pointer;">
+			<td>${list.idx}</td>
+			<td>${list.title }</td>
+			<td>${list.regdate }</td>
+			<td>${list.view_cnt }</td>
 		</tr>
 	</c:forEach>
 </table>
@@ -31,15 +35,14 @@
 </form>
 
 <script type="text/javascript">
-	function getUser(username) {
-		location.href = "/member/" + username + ".do";
+	function goView(idx) {
+		location.href = "/list/view.do?idx=" + idx;
 	}
 	
-	
-	function getPageList() {
+	function getPageList(page) {
 		var f = document.frm	
 		f.action = "./list.do"
-		f.p.value = num;
+		f.p.value = page;
 		f.submit();
 	}
 </script>

@@ -50,7 +50,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/board/modify.do")
-	public String updateBoardArticle(@ModelAttribute BoardVO boardVO) throws Exception {
+	public String updatepageBoardArticle(@ModelAttribute BoardVO boardVO) throws Exception {
 		
 		return "board/modify.myhome";
 	}
@@ -65,5 +65,11 @@ public class BoardController {
 	public String deleteBoardArticle(BoardVO boardVO) throws Exception {
 		
 		return "redirect:/board/list.do";
+	}
+	
+	@RequestMapping(value="/board/update.do")
+	public String updateBoardArticle(BoardVO boardVO) throws Exception {
+		
+		return "redirect:/board/view.do?idx=" + boardVO.getIdx();
 	}
 }

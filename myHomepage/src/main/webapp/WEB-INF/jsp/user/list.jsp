@@ -36,10 +36,10 @@
 	}
 	
 	
-	function getPageList() {
+	function getPageList(page) {
 		var f = document.frm	
 		f.action = "./list.do"
-		f.p.value = num;
+		f.p.value = page;
 		f.submit();
 	}
 </script>
