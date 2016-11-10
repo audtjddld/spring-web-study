@@ -12,6 +12,7 @@
 					CONTENT,
 					VIEW_CNT,
 					ATCH_FILE_ID,
+					USERNAME,
 					REGDATE
 			FROM BOARD
 			 WHERE USE_YN = 'Y'
@@ -29,6 +30,7 @@
 				CONTENT,
 				VIEW_CNT,
 				ATCH_FILE_ID,
+				USERNAME,
 				REGDATE
 			FROM BOARD
 			 WHERE IDX = #{idx}
@@ -38,9 +40,9 @@
 	<!-- 저장 -->
 	<insert id="insertBoardArticle" parameterType="BoardVO" >
 		INSERT INTO BOARD
-			(IDX, TITLE, CONTENT, VIEW_CNT, ATCH_FILE_ID, USE_YN, REGDATE)
+			(IDX, TITLE, CONTENT, VIEW_CNT, ATCH_FILE_ID, USE_YN, REGDATE, USERNAME)
 			 VALUES
-			(#{idx}, #{title}, #{content}, 0, #{atchFileId}, 'Y', #{regdate})
+			(#{idx}, #{title}, #{content}, 0, #{atchFileId}, 'Y', #{regdate}, #{username})
 	</insert>
 	
 	<!-- 삭제 -->

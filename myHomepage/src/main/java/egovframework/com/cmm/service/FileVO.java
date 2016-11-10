@@ -63,6 +63,15 @@ public class FileVO implements Serializable {
 	 */
 	public String streFileNm = "";
 
+	public FileVO() {
+		
+	}
+	
+	public FileVO(String atchFileId) {
+		super();
+		this.atchFileId = atchFileId;
+	}
+	
 	/**
 	 * atchFileId attribute를 리턴한다.
 	 *
@@ -71,6 +80,7 @@ public class FileVO implements Serializable {
 	public String getAtchFileId() {
 		return atchFileId;
 	}
+
 
 	/**
 	 * atchFileId attribute 값을 설정한다.

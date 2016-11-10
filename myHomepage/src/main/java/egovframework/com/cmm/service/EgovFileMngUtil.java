@@ -76,8 +76,8 @@ public class EgovFileMngUtil {
 	    storePathString = propertyService.getString("Globals.fileStorePath");
 	} else {
 	    storePathString = propertyService.getString(storePath);
-	}
 
+	}
 	if ("".equals(atchFileId) || atchFileId == null) {
 	    atchFileIdString = idgenService.getNextStringId();
 	} else {

@@ -1,10 +1,13 @@
 package com.study.myhome.board.service;
 
 import java.util.Date;
+import java.util.List;
 
 import org.apache.ibatis.type.Alias;
 
 import com.study.myhome.common.service.Pageable;
+
+import egovframework.com.cmm.service.FileVO;
 
 @Alias("BoardVO")
 public class BoardVO extends Pageable {
@@ -20,7 +23,11 @@ public class BoardVO extends Pageable {
 
 	private String atchFileId;
 
+	private String username;
+	
 	private Date regdate;
+	
+	private List<FileVO> files;
 	
 	{
 		regdate = new Date();
@@ -101,4 +108,26 @@ public class BoardVO extends Pageable {
 		this.atchFileId = atchFileId;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public void setAtchFileId(List<FileVO> files) {
+		if(files != null) {
+			this.atchFileId = files.get(0).getAtchFileId();
+		}
+	}
+
+	public List<FileVO> getFiles() {
+		return files;
+	}
+
+	public void setFiles(List<FileVO> files) {
+		this.files = files;
+	}
+	
 }

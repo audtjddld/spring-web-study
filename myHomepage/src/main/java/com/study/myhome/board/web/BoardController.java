@@ -1,20 +1,21 @@
 package com.study.myhome.board.web;
 
-import java.util.Map;
-
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartRequest;
 
 import com.study.myhome.board.service.BoardService;
 import com.study.myhome.board.service.BoardVO;
+import com.study.myhome.common.util.ListObject;
 
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 @Controller
+@RequestMapping(value = {"/user", "/manager"})
 public class BoardController {
 
 	@Autowired
@@ -26,16 +27,9 @@ public class BoardController {
 		BeanUtils.copyProperties(paginationInfo, boardVO);
 
 		// list와 전체 페이징 갯수를 가져와야 한다.
-		Map resultMap = boardService.selectBoardList(boardVO);
-		// total 갯수
-		int totalCnt = (int) resultMap.get("totalCnt");
-
-		// 페이징 된 리스트 갯수
-		modelMap.addAttribute("list", resultMap.get("list"));
-
-		paginationInfo.setTotalRecordCount(totalCnt);
-		// 페이징 정보
-		modelMap.addAttribute("paginationInfo", paginationInfo);
+		ListObject listObj = boardService.selectBoardList(boardVO);
+		listObj.setPaginationInfo(paginationInfo);
+		modelMap.addAttribute("listObj", listObj);
 		
 		return "board/list.myhome";
 	}
@@ -49,26 +43,66 @@ public class BoardController {
 		return "board/view.myhome";
 	}
 	
+	/**
+	 * 수정 페이지
+	 * @author 정명성
+	 * @create date : 2016. 11. 10.
+	 * @param mutipartRequest
+	 * @param boardVO
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "/board/modify.do")
-	public String updatepageBoardArticle(@ModelAttribute BoardVO boardVO) throws Exception {
+	public String modifyArticlePage(MultipartRequest mutipartRequest, @ModelAttribute BoardVO boardVO) throws Exception {
+		
 		
 		return "board/modify.myhome";
 	}
 	
+	/**
+	 * 게시물 정보 저장
+	 * @author 정명성
+	 * @create date : 2016. 11. 10.
+	 * @param mutipartRequest
+	 * @param boardVO
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "/board/insert.do")
-	public String insertBoardArticle(BoardVO boardVO) throws Exception {
+	public String insertBoardArticle(MultipartRequest mutipartRequest, BoardVO boardVO) throws Exception {
+		
+		boardService.insertBoardArticle(mutipartRequest, boardVO);
 		
 		return "redirect:/board/list.do";
 	}
 	
+	/**
+	 * 게시물 삭제
+	 * @author 정명성
+	 * @create date : 2016. 11. 10.
+	 * @param boardVO
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "/board/delete.do")
 	public String deleteBoardArticle(BoardVO boardVO) throws Exception {
 		
 		return "redirect:/board/list.do";
 	}
 	
+	/**
+	 * 게시물 정보 수정
+	 * @author 정명성
+	 * @create date : 2016. 11. 10.
+	 * @param mutipartRequest
+	 * @param boardVO
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value="/board/update.do")
-	public String updateBoardArticle(BoardVO boardVO) throws Exception {
+	public String updateBoardArticle(MultipartRequest multipartRequest, BoardVO boardVO) throws Exception {
+		
+		boardService.updateBoardArticle(multipartRequest, boardVO);
 		
 		return "redirect:/board/view.do?idx=" + boardVO.getIdx();
 	}

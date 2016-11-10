@@ -1,6 +1,8 @@
 package com.study.myhome.board.service;
 
-import java.util.Map;
+import org.springframework.web.multipart.MultipartRequest;
+
+import com.study.myhome.common.util.ListObject;
 
 public interface BoardService {
 
@@ -13,7 +15,7 @@ public interface BoardService {
 	 * @return
 	 * @throws Exception
 	 */
-	public Map<String, Object> selectBoardList(BoardVO boardVO) throws Exception;
+	public ListObject<BoardVO> selectBoardList(BoardVO boardVO) throws Exception;
 
 	/**
 	 * 게시글 조회
@@ -34,7 +36,7 @@ public interface BoardService {
 	 * @param boardVO
 	 * @throws Exception
 	 */
-	public void updateBoardArticle(BoardVO boardVO) throws Exception;
+	public void updateBoardArticle(MultipartRequest multipartRequest, BoardVO boardVO) throws Exception;
 
 	/**
 	 * 게시글 삭제
@@ -50,10 +52,11 @@ public interface BoardService {
 	 * 게시글 입력
 	 * 
 	 * @author 정명성
+	 * @param mutipartRequest 
 	 * @create date : 2016. 11. 7.
 	 * @param boardVO
 	 * @throws Exception
 	 */
-	public void insertBoardArticle(BoardVO boardVO) throws Exception;
+	public void insertBoardArticle(MultipartRequest mutipartRequest, BoardVO boardVO) throws Exception;
 
 }

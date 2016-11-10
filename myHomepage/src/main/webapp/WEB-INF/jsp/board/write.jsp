@@ -35,10 +35,12 @@
 	}
 
 	function goInsert() {
-		// validation check 부분 추가
-		var f = document.frm;
-		f.action="./insert.do";
-		f.submit();
+		if(confirm('입력하시겠습니까?')) {
+			// validation check 부분 추가
+			var f = document.frm;
+			f.action="./insert.do";
+			f.submit();
+		}
 	}
 	//]]>
 </script>

@@ -63,8 +63,6 @@ public class UserController {
 		paginationInfo.setTotalRecordCount(totalCnt);
 		// 페이징 정보
 		modelMap.addAttribute("paginationInfo", paginationInfo);
-		// 파라미터 정보
-		modelMap.addAttribute("vo", userVO);
 
 		return "user/list.myhome";
 	}
