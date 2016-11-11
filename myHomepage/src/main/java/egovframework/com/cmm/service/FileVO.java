@@ -2,7 +2,6 @@ package egovframework.com.cmm.service;
 
 import java.io.Serializable;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.ibatis.type.Alias;
 
 /**
@@ -13,7 +12,7 @@ import org.apache.ibatis.type.Alias;
  *               수정일 수정자 수정내용 ------- ------- ------------------- 2009. 3. 25.
  *               이삼섭
  *
- * @author 공통 서비스 개발팀 이삼섭
+ * @author 공통 서비스 개발팀 이삼섭	
  * @since 2009. 3. 25.
  * @version
  * @see
@@ -29,226 +28,191 @@ public class FileVO implements Serializable {
 	/**
 	 * 첨부파일 아이디
 	 */
-	public String atchFileId = "";
+	public String atch_file_id = "";
 	/**
 	 * 생성일자
 	 */
-	public String creatDt = "";
+	public String creat_dt = "";
 	/**
 	 * 파일내용
 	 */
-	public String fileCn = "";
+	public String file_cn= "";
 	/**
 	 * 파일확장자
 	 */
-	public String fileExtsn = "";
+	public String file_extsn = "";
 	/**
 	 * 파일크기
 	 */
-	public String fileMg = "";
+	public String file_mg = "";
 	/**
 	 * 파일연번
 	 */
-	public String fileSn = "";
+	public String file_sn = "";
 	/**
 	 * 파일저장경로
 	 */
-	public String fileStreCours = "";
+	public String file_stre_cours = "";
 	/**
 	 * 원파일명
 	 */
-	public String orignlFileNm = "";
+	public String orignl_file_nm = "";
 	/**
 	 * 저장파일명
 	 */
-	public String streFileNm = "";
+	public String stre_file_nm = "";
 
 	public FileVO() {
 		
 	}
-	
-	public FileVO(String atchFileId) {
+
+	public String getAtch_file_id() {
+		return atch_file_id;
+	}
+
+	public void setAtch_file_id(String atch_file_id) {
+		this.atch_file_id = atch_file_id;
+	}
+
+	public String getCreat_dt() {
+		return creat_dt;
+	}
+
+	public void setCreat_dt(String creat_dt) {
+		this.creat_dt = creat_dt;
+	}
+
+	public String getFile_cn() {
+		return file_cn;
+	}
+
+	public void setFile_cn(String file_cn) {
+		this.file_cn = file_cn;
+	}
+
+	public String getFile_mg() {
+		return file_mg;
+	}
+
+	public void setFile_mg(String file_mg) {
+		this.file_mg = file_mg;
+	}
+
+	public String getFile_sn() {
+		return file_sn;
+	}
+
+	public void setFile_sn(String file_sn) {
+		this.file_sn = file_sn;
+	}
+
+	public String getFile_stre_cours() {
+		return file_stre_cours;
+	}
+
+	public void setFile_stre_cours(String file_stre_cours) {
+		this.file_stre_cours = file_stre_cours;
+	}
+
+	public String getOrignl_file_nm() {
+		return orignl_file_nm;
+	}
+
+	public void setOrignl_file_nm(String orignl_file_nm) {
+		this.orignl_file_nm = orignl_file_nm;
+	}
+
+	public String getStre_file_nm() {
+		return stre_file_nm;
+	}
+
+	public void setStre_file_nm(String stre_file_nm) {
+		this.stre_file_nm = stre_file_nm;
+	}
+
+	public FileVO(String atch_file_id) {
 		super();
-		this.atchFileId = atchFileId;
-	}
-	
-	/**
-	 * atchFileId attribute를 리턴한다.
-	 *
-	 * @return the atchFileId
-	 */
-	public String getAtchFileId() {
-		return atchFileId;
+		this.atch_file_id = atch_file_id;
 	}
 
-
-	/**
-	 * atchFileId attribute 값을 설정한다.
-	 *
-	 * @param atchFileId
-	 *            the atchFileId to set
-	 */
-	public void setAtchFileId(String atchFileId) {
-		this.atchFileId = atchFileId;
+	public String getFile_extsn() {
+		return file_extsn;
 	}
 
-	/**
-	 * creatDt attribute를 리턴한다.
-	 *
-	 * @return the creatDt
-	 */
-	public String getCreatDt() {
-		return creatDt;
+	public void setFile_extsn(String file_extsn) {
+		this.file_extsn = file_extsn;
 	}
 
-	/**
-	 * creatDt attribute 값을 설정한다.
-	 *
-	 * @param creatDt
-	 *            the creatDt to set
-	 */
-	public void setCreatDt(String creatDt) {
-		this.creatDt = creatDt;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((atch_file_id == null) ? 0 : atch_file_id.hashCode());
+		result = prime * result + ((creat_dt == null) ? 0 : creat_dt.hashCode());
+		result = prime * result + ((file_cn == null) ? 0 : file_cn.hashCode());
+		result = prime * result + ((file_extsn == null) ? 0 : file_extsn.hashCode());
+		result = prime * result + ((file_mg == null) ? 0 : file_mg.hashCode());
+		result = prime * result + ((file_sn == null) ? 0 : file_sn.hashCode());
+		result = prime * result + ((file_stre_cours == null) ? 0 : file_stre_cours.hashCode());
+		result = prime * result + ((orignl_file_nm == null) ? 0 : orignl_file_nm.hashCode());
+		result = prime * result + ((stre_file_nm == null) ? 0 : stre_file_nm.hashCode());
+		return result;
 	}
 
-	/**
-	 * fileCn attribute를 리턴한다.
-	 *
-	 * @return the fileCn
-	 */
-	public String getFileCn() {
-		return fileCn;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FileVO other = (FileVO) obj;
+		if (atch_file_id == null) {
+			if (other.atch_file_id != null)
+				return false;
+		} else if (!atch_file_id.equals(other.atch_file_id))
+			return false;
+		if (creat_dt == null) {
+			if (other.creat_dt != null)
+				return false;
+		} else if (!creat_dt.equals(other.creat_dt))
+			return false;
+		if (file_cn == null) {
+			if (other.file_cn != null)
+				return false;
+		} else if (!file_cn.equals(other.file_cn))
+			return false;
+		if (file_extsn == null) {
+			if (other.file_extsn != null)
+				return false;
+		} else if (!file_extsn.equals(other.file_extsn))
+			return false;
+		if (file_mg == null) {
+			if (other.file_mg != null)
+				return false;
+		} else if (!file_mg.equals(other.file_mg))
+			return false;
+		if (file_sn == null) {
+			if (other.file_sn != null)
+				return false;
+		} else if (!file_sn.equals(other.file_sn))
+			return false;
+		if (file_stre_cours == null) {
+			if (other.file_stre_cours != null)
+				return false;
+		} else if (!file_stre_cours.equals(other.file_stre_cours))
+			return false;
+		if (orignl_file_nm == null) {
+			if (other.orignl_file_nm != null)
+				return false;
+		} else if (!orignl_file_nm.equals(other.orignl_file_nm))
+			return false;
+		if (stre_file_nm == null) {
+			if (other.stre_file_nm != null)
+				return false;
+		} else if (!stre_file_nm.equals(other.stre_file_nm))
+			return false;
+		return true;
 	}
-
-	/**
-	 * fileCn attribute 값을 설정한다.
-	 *
-	 * @param fileCn
-	 *            the fileCn to set
-	 */
-	public void setFileCn(String fileCn) {
-		this.fileCn = fileCn;
-	}
-
-	/**
-	 * fileExtsn attribute를 리턴한다.
-	 *
-	 * @return the fileExtsn
-	 */
-	public String getFileExtsn() {
-		return fileExtsn;
-	}
-
-	/**
-	 * fileExtsn attribute 값을 설정한다.
-	 *
-	 * @param fileExtsn
-	 *            the fileExtsn to set
-	 */
-	public void setFileExtsn(String fileExtsn) {
-		this.fileExtsn = fileExtsn;
-	}
-
-	/**
-	 * fileMg attribute를 리턴한다.
-	 *
-	 * @return the fileMg
-	 */
-	public String getFileMg() {
-		return fileMg;
-	}
-
-	/**
-	 * fileMg attribute 값을 설정한다.
-	 *
-	 * @param fileMg
-	 *            the fileMg to set
-	 */
-	public void setFileMg(String fileMg) {
-		this.fileMg = fileMg;
-	}
-
-	/**
-	 * fileSn attribute를 리턴한다.
-	 *
-	 * @return the fileSn
-	 */
-	public String getFileSn() {
-		return fileSn;
-	}
-
-	/**
-	 * fileSn attribute 값을 설정한다.
-	 *
-	 * @param fileSn
-	 *            the fileSn to set
-	 */
-	public void setFileSn(String fileSn) {
-		this.fileSn = fileSn;
-	}
-
-	/**
-	 * fileStreCours attribute를 리턴한다.
-	 *
-	 * @return the fileStreCours
-	 */
-	public String getFileStreCours() {
-		return fileStreCours;
-	}
-
-	/**
-	 * fileStreCours attribute 값을 설정한다.
-	 *
-	 * @param fileStreCours
-	 *            the fileStreCours to set
-	 */
-	public void setFileStreCours(String fileStreCours) {
-		this.fileStreCours = fileStreCours;
-	}
-
-	/**
-	 * orignlFileNm attribute를 리턴한다.
-	 *
-	 * @return the orignlFileNm
-	 */
-	public String getOrignlFileNm() {
-		return orignlFileNm;
-	}
-
-	/**
-	 * orignlFileNm attribute 값을 설정한다.
-	 *
-	 * @param orignlFileNm
-	 *            the orignlFileNm to set
-	 */
-	public void setOrignlFileNm(String orignlFileNm) {
-		this.orignlFileNm = orignlFileNm;
-	}
-
-	/**
-	 * streFileNm attribute를 리턴한다.
-	 *
-	 * @return the streFileNm
-	 */
-	public String getStreFileNm() {
-		return streFileNm;
-	}
-
-	/**
-	 * streFileNm attribute 값을 설정한다.
-	 *
-	 * @param streFileNm
-	 *            the streFileNm to set
-	 */
-	public void setStreFileNm(String streFileNm) {
-		this.streFileNm = streFileNm;
-	}
-
-	/**
-	 * toString 메소드를 대치한다.
-	 */
-	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
-	}
-
 }

@@ -19,7 +19,7 @@ import com.study.myhome.user.service.UserVO;
 import egovframework.com.cmm.LoginVO;
 
 @Controller
-public class LoginController extends DuplicationLoginComponent {
+public class LoginController {
 
 	private static Logger LOG = LoggerFactory.getLogger(JoinController.class);
 
@@ -64,7 +64,7 @@ public class LoginController extends DuplicationLoginComponent {
 		
 		HttpSession session = reqeust.getSession();
 		session.setAttribute("LoginVO", loginVO);
-		setSession(session, loginVO.getUsername());
+		//setSession(session, loginVO.getUsername());
 		
 		return "redirect:/index.do";
 	}

@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 import egovframework.com.cmm.LoginVO;
 
-@Component
+//@Component
 public class DuplicationLoginComponent implements HttpSessionBindingListener {
 	private final static Logger LOG = LoggerFactory.getLogger(DuplicationLoginComponent.class);
 	

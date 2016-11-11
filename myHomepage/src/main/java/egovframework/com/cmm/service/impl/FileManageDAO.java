@@ -35,7 +35,7 @@ public class FileManageDAO extends CommonDAO {
 	 */
 	public String insertFileInfs(List<?> fileList) throws Exception {
 		FileVO vo = (FileVO) fileList.get(0);
-		String atchFileId = vo.getAtchFileId();
+		String atchFileId = vo.getAtch_file_id();
 
 		sessionTemplate.insert("FileManageDAO.insertFileMaster", vo);
 

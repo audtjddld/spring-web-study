@@ -48,7 +48,7 @@ public class EgovFileMngServiceImpl extends EgovAbstractServiceImpl implements E
 	 */
 	@Override
 	public String insertFileInf(FileVO fvo) throws Exception {
-		String atchFileId = fvo.getAtchFileId();
+		String atchFileId = fvo.getAtch_file_id();
 
 		fileMngDAO.insertFileInf(fvo);
 

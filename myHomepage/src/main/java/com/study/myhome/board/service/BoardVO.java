@@ -21,7 +21,7 @@ public class BoardVO extends Pageable {
 
 	private String use_yn = "Y";
 
-	private String atchFileId;
+	private String atch_file_id;
 
 	private String username;
 	
@@ -53,7 +53,7 @@ public class BoardVO extends Pageable {
 		super();
 		this.title = title;
 		this.content = content;
-		this.atchFileId = atchFileId;
+		this.atch_file_id = atchFileId;
 	}
 
 	public BoardVO(Long idx, String title, String content, String atchFileId) {
@@ -61,7 +61,7 @@ public class BoardVO extends Pageable {
 		this.idx = idx;
 		this.title = title;
 		this.content = content;
-		this.atchFileId = atchFileId;
+		this.atch_file_id = atchFileId;
 	}
 
 	public void setIdx(Long idx) {
@@ -100,12 +100,12 @@ public class BoardVO extends Pageable {
 		this.use_yn = use_yn;
 	}
 
-	public String getAtchFileId() {
-		return atchFileId;
+	public String getAtch_file_id() {
+		return atch_file_id;
 	}
 
-	public void setAtchFileId(String atchFileId) {
-		this.atchFileId = atchFileId;
+	public void setAtch_file_id(String atch_file_id) {
+		this.atch_file_id = atch_file_id;
 	}
 
 	public String getUsername() {
@@ -116,9 +116,9 @@ public class BoardVO extends Pageable {
 		this.username = username;
 	}
 
-	public void setAtchFileId(List<FileVO> files) {
+	public void setAtch_file_id(List<FileVO> files) {
 		if(files != null) {
-			this.atchFileId = files.get(0).getAtchFileId();
+			this.atch_file_id = files.get(0).getAtch_file_id();
 		}
 	}
 

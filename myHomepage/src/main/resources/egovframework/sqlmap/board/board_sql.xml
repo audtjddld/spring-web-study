@@ -13,10 +13,11 @@
 					VIEW_CNT,
 					ATCH_FILE_ID,
 					USERNAME,
-					REGDATE
+					FORMATDATETIME ( REGDATE , 'yyyy-MM-dd') as REGDATE
 			FROM BOARD
 			 WHERE USE_YN = 'Y'
 		) WHERE row BETWEEN #{firstIndex} + 1  AND #{firstIndex} + #{recordCountPerPage}
+			ORDER BY REGDATE DESC
 	</select>
 	
 	<select id="selectBoardListCnt" parameterType="BoardVO" resultType="java.lang.Integer">
@@ -31,10 +32,11 @@
 				VIEW_CNT,
 				ATCH_FILE_ID,
 				USERNAME,
-				REGDATE
+				FORMATDATETIME ( REGDATE , 'yyyy-MM-dd') as REGDATE
 			FROM BOARD
 			 WHERE IDX = #{idx}
 			   AND USE_YN = 'Y'
+			   
 	</select>
 	
 	<!-- 저장 -->
@@ -42,7 +44,7 @@
 		INSERT INTO BOARD
 			(IDX, TITLE, CONTENT, VIEW_CNT, ATCH_FILE_ID, USE_YN, REGDATE, USERNAME)
 			 VALUES
-			(#{idx}, #{title}, #{content}, 0, #{atchFileId}, 'Y', #{regdate}, #{username})
+			(#{idx}, #{title}, #{content}, 0, #{atch_file_id}, 'Y', #{regdate}, #{username})
 	</insert>
 	
 	<!-- 삭제 -->
@@ -57,7 +59,9 @@
 		UPDATE BOARD SET
 			TITLE = #{title},
 			CONTENT = #{content}
-			
+			<if test="atch_file_id != null" >
+			, atch_file_id = #{atch_file_id}
+			</if>
 			WHERE IDX = #{idx}
 	</update>
 	

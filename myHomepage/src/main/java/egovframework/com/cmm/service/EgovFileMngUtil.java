@@ -122,13 +122,13 @@ public class EgovFileMngUtil {
 		file.transferTo(new File(filePath));
 	    }
 	    fvo = new FileVO();
-	    fvo.setFileExtsn(fileExt);
-	    fvo.setFileStreCours(storePathString);
-	    fvo.setFileMg(Long.toString(_size));
-	    fvo.setOrignlFileNm(orginFileName);
-	    fvo.setStreFileNm(newName);
-	    fvo.setAtchFileId(atchFileIdString);
-	    fvo.setFileSn(String.valueOf(fileKey));
+	    fvo.setFile_extsn(fileExt);
+	    fvo.setFile_stre_cours(storePathString);
+	    fvo.setFile_mg(Long.toString(_size));
+	    fvo.setOrignl_file_nm(orginFileName);
+	    fvo.setStre_file_nm(newName);
+	    fvo.setAtch_file_id(atchFileIdString);
+	    fvo.setFile_sn(String.valueOf(fileKey));
 
 	    //writeFile(file, newName, storePathString);
 	    result.add(fvo);

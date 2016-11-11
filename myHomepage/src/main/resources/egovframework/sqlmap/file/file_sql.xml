@@ -16,7 +16,7 @@
 		FROM
 			LETTNFILE a, LETTNFILEDETAIL b
 		WHERE
-				a.ATCH_FILE_ID = #{atchFileId}
+				a.ATCH_FILE_ID = #{atch_file_id}
 			AND
 				a.ATCH_FILE_ID = b.ATCH_FILE_ID
 			AND
@@ -28,7 +28,7 @@
 		INSERT INTO LETTNFILE
 		(ATCH_FILE_ID, CREAT_DT, USE_AT)
 		VALUES
-		( #{atchFileId}, NOW(), 'Y')
+		( #{atch_file_id}, NOW(), 'Y')
 	</insert>
 
 	<insert id="insertFileDetail" parameterType="FileVO">
@@ -45,29 +45,29 @@
 		)
 		VALUES
 		( 
-			#{atchFileId}, 
-			#{fileSn}, 
-			#{fileStreCours}, 
-			#{streFileNm},
-			#{orignlFileNm}, 
-			#{fileExtsn}, 
-			#{fileMg}, 
-			#{fileCn} 
+			#{atch_file_id}, 
+			#{file_sn}, 
+			#{file_stre_cours}, 
+			#{stre_file_nm},
+			#{orignl_file_nm}, 
+			#{file_extsn}, 
+			#{file_mg}, 
+			#{file_cn} 
 		)
 	</insert>
 
 	<delete id="deleteFileDetail" parameterType="FileVO">
 		DELETE FROM LETTNFILEDETAIL
 		WHERE
-			ATCH_FILE_ID = #{atchFileId}
+			ATCH_FILE_ID = #{atch_file_id}
 		AND
-			FILE_SN = #{fileSn}
+			FILE_SN = #{file_sn}
 	</delete>
 
 	<select id="getMaxFileSN" parameterType="FileVO" resultType="java.lang.Integer">
 		SELECT IFNULL(MAX(FILE_SN),0)+1 AS FILE_SN
 			FROM LETTNFILEDETAIL
-			WHERE ATCH_FILE_ID = #{atchFileId}
+			WHERE ATCH_FILE_ID = #{atch_file_id}
 	</select>
 
 	<select id="selectFileInf" parameterType="FileVO" resultType="FileVO">
@@ -80,15 +80,15 @@
 				ORIGNL_FILE_NM, 
 				FILE_SIZE
 		FROM LETTNFILEDETAIL
-			WHERE ATCH_FILE_ID = #{atchFileId}
+			WHERE ATCH_FILE_ID = #{atch_file_id}
 		AND
-			FILE_SN = #{fileSn}
+			FILE_SN = #{file_sn}
 	</select>
 
 	<update id="deleteCOMTNFILE" parameterType="FileVO">
 		UPDATE LETTNFILE
 		SET USE_AT = 'N'
-		WHERE ATCH_FILE_ID = #atchFileId#
+		WHERE ATCH_FILE_ID = #{atch_file_id}
 	</update>
 
 	<select id="selectFileListByFileNm" parameterType="FileVO" resultType="FileVO">
@@ -140,7 +140,7 @@
 				b.FILE_SIZE, 
 				a.CREAT_DT
 		FROM LETTNFILE a, LETTNFILEDETAIL b
-		WHERE	a.ATCH_FILE_ID = #atchFileId#
+		WHERE	a.ATCH_FILE_ID = #{atch_file_id}
 		AND		a.ATCH_FILE_ID = b.ATCH_FILE_ID
 		AND		UPPER(b.FILE_EXTSN) IN ('GIF','JPG','BMP','PNG')
 		AND		a.USE_AT = 'Y'

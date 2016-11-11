@@ -27,11 +27,17 @@ public class BoardController {
 		BeanUtils.copyProperties(paginationInfo, boardVO);
 
 		// list와 전체 페이징 갯수를 가져와야 한다.
-		ListObject listObj = boardService.selectBoardList(boardVO);
+		ListObject<BoardVO> listObj = boardService.selectBoardList(boardVO);
 		listObj.setPaginationInfo(paginationInfo);
 		modelMap.addAttribute("listObj", listObj);
 		
 		return "board/list.myhome";
+	}
+	
+	@RequestMapping(value = "/board/write.do")
+	public String writePage(@ModelAttribute BoardVO boardVO) throws Exception {
+		
+		return "board/write.myhome";
 	}
 	
 	
@@ -53,8 +59,9 @@ public class BoardController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/board/modify.do")
-	public String modifyArticlePage(MultipartRequest mutipartRequest, @ModelAttribute BoardVO boardVO) throws Exception {
+	public String modifyArticlePage(@ModelAttribute BoardVO boardVO, ModelMap modelMap) throws Exception {
 		
+		modelMap.addAttribute("info", boardService.selectBoardArticle(boardVO));
 		
 		return "board/modify.myhome";
 	}
@@ -69,11 +76,11 @@ public class BoardController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/board/insert.do")
-	public String insertBoardArticle(MultipartRequest mutipartRequest, BoardVO boardVO) throws Exception {
+	public String insertBoardArticle(MultipartRequest mutipartRequest, @ModelAttribute BoardVO boardVO) throws Exception {
 		
 		boardService.insertBoardArticle(mutipartRequest, boardVO);
 		
-		return "redirect:/board/list.do";
+		return "redirect:./list.do";
 	}
 	
 	/**
@@ -85,9 +92,11 @@ public class BoardController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/board/delete.do")
-	public String deleteBoardArticle(BoardVO boardVO) throws Exception {
+	public String deleteBoardArticle(@ModelAttribute BoardVO boardVO) throws Exception {
 		
-		return "redirect:/board/list.do";
+		boardService.deleteBoardArticle(boardVO);
+		
+		return "redirect:./list.do";
 	}
 	
 	/**
@@ -100,10 +109,10 @@ public class BoardController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/board/update.do")
-	public String updateBoardArticle(MultipartRequest multipartRequest, BoardVO boardVO) throws Exception {
+	public String updateBoardArticle(MultipartRequest multipartRequest, @ModelAttribute BoardVO boardVO) throws Exception {
 		
 		boardService.updateBoardArticle(multipartRequest, boardVO);
 		
-		return "redirect:/board/view.do?idx=" + boardVO.getIdx();
+		return "redirect:./view.do?idx=" + boardVO.getIdx();
 	}
 }

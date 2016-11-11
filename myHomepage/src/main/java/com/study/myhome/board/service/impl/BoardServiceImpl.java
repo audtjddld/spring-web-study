@@ -42,8 +42,8 @@ public class BoardServiceImpl implements BoardService {
 	 */
 	public BoardVO selectBoardArticle(BoardVO boardVO) throws Exception {
 		boardVO = boardDAO.selectBoardArticle(boardVO);
-		boardVO.setFiles(fileMngService.selectFileInfs(new FileVO(boardVO.getAtchFileId())));
-		return boardDAO.selectBoardArticle(boardVO);
+		boardVO.setFiles(fileMngService.selectFileInfs(new FileVO(boardVO.getAtch_file_id())));
+		return boardVO;
 	}
 	
 	/**
@@ -51,12 +51,27 @@ public class BoardServiceImpl implements BoardService {
 	 */
 	public void updateBoardArticle(MultipartRequest multipartRequest, BoardVO boardVO) throws Exception {
 		
-		if(!multipartRequest.getFileMap().isEmpty()) {
-			List<FileVO> files = egovFileMngUtil.parseFileInf(multipartRequest.getFileMap(), "", 0, "", "");
-			boardVO.setAtchFileId(files);
-		}
+		setFiles(multipartRequest, boardVO);
 		
 		boardDAO.updateBoardArticle(boardVO);	
+	}
+
+	/**
+	 * 파일 저장
+	 * @author 정명성
+	 * @create date : 2016. 11. 11.
+	 * @param multipartRequest
+	 * @param boardVO
+	 * @throws Exception
+	 */
+	private void setFiles(MultipartRequest multipartRequest, BoardVO boardVO) throws Exception {
+		List<FileVO> files = egovFileMngUtil.parseFileInf(multipartRequest.getFileMap(), "", 0, "", "");
+		
+		if(files != null && !files.isEmpty()) {
+			// 파일 처리
+			fileMngService.insertFileInfs(files);
+			boardVO.setAtch_file_id(files);
+		}
 	}
 	
 	/**
@@ -71,13 +86,8 @@ public class BoardServiceImpl implements BoardService {
 	 */
 	public void insertBoardArticle(MultipartRequest multipartRequest, BoardVO boardVO) throws Exception {
 		
-		List<FileVO> files = egovFileMngUtil.parseFileInf(multipartRequest.getFileMap(), "", 0, "", "");
+		setFiles(multipartRequest, boardVO);
 		
-		if(files != null && !files.isEmpty()) {
-			// 파일 처리
-			fileMngService.insertFileInfs(files);
-		}
-		boardVO.setAtchFileId(files);
 		// 게시글 등록
 		boardDAO.insertBoardArticle(boardVO);
 	}

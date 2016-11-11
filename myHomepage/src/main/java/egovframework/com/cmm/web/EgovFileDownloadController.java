@@ -132,11 +132,11 @@ public class EgovFileDownloadController {
 		if (isAuthenticated) {
 
 			FileVO fileVO = new FileVO();
-			fileVO.setAtchFileId(atchFileId);
-			fileVO.setFileSn(fileSn);
+			fileVO.setAtch_file_id(atchFileId);
+			fileVO.setFile_sn(fileSn);
 			FileVO fvo = fileService.selectFileInf(fileVO);
 
-			File uFile = new File(fvo.getFileStreCours(), fvo.getStreFileNm());
+			File uFile = new File(fvo.getFile_stre_cours(), fvo.getStre_file_nm());
 			long fSize = uFile.length();
 
 			if (fSize > 0) {
@@ -145,7 +145,7 @@ public class EgovFileDownloadController {
 				//response.setBufferSize(fSize);	// OutOfMemeory 발생
 				response.setContentType(mimetype);
 				//response.setHeader("Content-Disposition", "attachment; filename=\"" + URLEncoder.encode(fvo.getOrignlFileNm(), "utf-8") + "\"");
-				setDisposition(fvo.getOrignlFileNm(), request, response);
+				setDisposition(fvo.getOrignl_file_nm(), request, response);
 				//response.setContentLength(fSize);
 
 				/*
@@ -189,7 +189,7 @@ public class EgovFileDownloadController {
 
 				PrintWriter printwriter = response.getWriter();
 				printwriter.println("<html>");
-				printwriter.println("<br><br><br><h2>Could not get file name:<br>" + fvo.getOrignlFileNm() + "</h2>");
+				printwriter.println("<br><br><br><h2>Could not get file name:<br>" + fvo.getOrignl_file_nm() + "</h2>");
 				printwriter.println("<br><br><br><center><h3><a href='javascript: history.go(-1)'>Back</a></h3></center>");
 				printwriter.println("<br><br><br>&copy; webAccess");
 				printwriter.println("</html>");

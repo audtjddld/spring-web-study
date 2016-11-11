@@ -58,7 +58,7 @@ public class EgovFileMngController {
 			ModelMap model) throws Exception {
 		String atchFileId = (String) commandMap.get("param_atchFileId");
 
-		fileVO.setAtchFileId(atchFileId);
+		fileVO.setAtch_file_id(atchFileId);
 		List<FileVO> result = fileService.selectFileInfs(fileVO);
 
 		model.addAttribute("fileList", result);
@@ -85,7 +85,7 @@ public class EgovFileMngController {
 
 		String atchFileId = (String) commandMap.get("param_atchFileId");
 
-		fileVO.setAtchFileId(atchFileId);
+		fileVO.setAtch_file_id(atchFileId);
 
 		List<FileVO> result = fileService.selectFileInfs(fileVO);
 
@@ -151,7 +151,7 @@ public class EgovFileMngController {
 
 		String atchFileId = (String) commandMap.get("atchFileId");
 
-		fileVO.setAtchFileId(atchFileId);
+		fileVO.setAtch_file_id(atchFileId);
 		List<FileVO> result = fileService.selectImageFileList(fileVO);
 
 		model.addAttribute("fileList", result);
