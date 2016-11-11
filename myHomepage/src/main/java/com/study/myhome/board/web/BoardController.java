@@ -76,7 +76,8 @@ public class BoardController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/board/insert.do")
-	public String insertBoardArticle(MultipartRequest mutipartRequest, @ModelAttribute BoardVO boardVO) throws Exception {
+	public String insertBoardArticle(MultipartRequest mutipartRequest, 
+										@ModelAttribute BoardVO boardVO) throws Exception {
 		
 		boardService.insertBoardArticle(mutipartRequest, boardVO);
 		

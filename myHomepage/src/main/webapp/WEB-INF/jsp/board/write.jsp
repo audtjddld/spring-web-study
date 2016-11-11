@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/jsp/common/el.jspf" %>
 <h1>게시글 정보 작성</h1>
+
 <form name="frm" enctype="multipart/form-data" method="post">
 	<table class="table table-bordered">
 		<thead>

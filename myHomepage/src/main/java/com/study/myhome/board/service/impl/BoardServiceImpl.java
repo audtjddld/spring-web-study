@@ -64,7 +64,8 @@ public class BoardServiceImpl implements BoardService {
 	 * @param boardVO
 	 * @throws Exception
 	 */
-	private void setFiles(MultipartRequest multipartRequest, BoardVO boardVO) throws Exception {
+	private void setFiles(MultipartRequest multipartRequest, 
+								BoardVO boardVO) throws Exception {
 		List<FileVO> files = egovFileMngUtil.parseFileInf(multipartRequest.getFileMap(), "", 0, "", "");
 		
 		if(files != null && !files.isEmpty()) {
@@ -84,7 +85,8 @@ public class BoardServiceImpl implements BoardService {
 	/**
 	 * 게시글 등록
 	 */
-	public void insertBoardArticle(MultipartRequest multipartRequest, BoardVO boardVO) throws Exception {
+	public void insertBoardArticle(MultipartRequest multipartRequest,
+										BoardVO boardVO) throws Exception {
 		
 		setFiles(multipartRequest, boardVO);
 		

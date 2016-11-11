@@ -45,6 +45,7 @@
 <form name="frm" method="post">
 	<input type="hidden" name="p" value="${boardVO.p }" />
 	<input type="hidden" name="idx" value="${info.idx }" />
+	<input type="hidden" name="atch_file_id" value="${info.atch_file_id }" />
 </form>
 
 <button class="btn btn-default" onclick="goList()">목록</button>
